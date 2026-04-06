@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pau - site</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- New Menu -->
+        <div id="main-menu">
+            <div id="menu-prev" class="menu-nav">&larr;</div>
+            <div data-section="1" class="menu-item active">Intro</div>
+            <div data-section="2" class="menu-item">About</div>
+            <div data-section="3" class="menu-item">Academics</div>
+            <div data-section="4" class="menu-item">Entrepreneurship</div>
+            <div data-section="5" class="menu-item">Service</div>
+            <div data-section="6" class="menu-item">Fencing</div>
+            <div id="menu-next" class="menu-nav">&rarr;</div>
+        </div>
+
+        <div id="slider-container">
+            <section id="section1" class="slide-section">
+
+                <!-- Interaction Indicator -->
+                <div id="indicator">
+                    <div class="indicator-knob">
+                        <div class="dots">
+                            <div class="dot animate-pulse"></div>
+                            <div class="dot animate-pulse delay-75"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Banner -->
+                <nav>
+                    <div class="">
+
+                    </div>
+                    <div class="">
+
+                    </div>
+                </nav>
+
+                <!-- Overlays -->
+                <div id="overlays">
+                    <div id="valor" class="overlay-content left">
+                        <div class="label">
+
+
+                        </div>
+                        <h1>STRATEGIST</h1>
+                    </div>
+
+                    <div id="logic" class="overlay-content right">
+                        <div class="label">
+
+                        </div>
+                        <h1>ATHLETE</h1>
+                    </div>
+                </div>
+
+                <canvas id="canvas"></canvas>
+
+                <!-- Footer -->
+                <footer>
+                    <div class="footer-left">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+                        </svg>
+                        <span>Move to harmonize with noise</span>
+                    </div>
+                    <div class="footer-right">
+                        <span>Perlin Reconstruction Protocol</span>
+                        <div class="divider"></div>
+                        <span>031</span>
+                    </div>
+                </footer>
+            </section>
+
+            <section id="section2" class="slide-section">
+                <div class="section-content">
+                    <span class="section-num">02</span>
+                    <h2>About</h2>
+                    <p>Proud member of the Class of 2027 at The Bronx High School of Science<br/>
+                        Born in Tokyo in 2009 to a Taiwanese mother and a Spanish father<br/>
+                        Relocated to New York at the age of 5<br/>
+                        Trilingual in English, Spanish and Mandarin<br/>
+                        Planning to pursue Economics, Business and Finance in college<br/>
+                        Passionate about fencing in both Epee and Foil
+                    </p>
+                    <a href="assets/Pau_Chou-Esteban-Resume.pdf" target="_blank" class="resume-btn">
+                        Resume
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                </div>
+            </section>
+
+            <section id="section3" class="slide-section">
+                <div class="section-content">
+                    <span class="section-num">03</span>
+                    <h2>Academics</h2>
+
+                    <div class="academic-grid">
+                        <!-- Card 1: Bronx Science -->
+                        <div class="academic-card" id="card-bronx">
+                            <div class="card-header">
+                                <img src="assets/Bronx-Science-Logo.jpeg" class="card-logo">
+                                <h3>Bronx Science Junior</h3>
+                                <div class="card-status">VIEW DETAIL</div>
+                            </div>
+                            <div class="card-expanded-content">
+                                <div class="card-hero-container">
+                                    <img src="assets/Pau-Chou-Esteban-Abuela-Bronx-Science.jpg" class="card-hero">
+                                </div>
+                                <div class="card-details">
+                                    <div class="institution-meta">
+                                        <a href="https://www.bxscience.edu" target="_blank" class="institution-link">
+                                            The Bronx High School of Science
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6">
+                                                </path>
+                                                <polyline points="15 3 21 3 21 9"></polyline>
+                                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                                            </svg>
+                                        </a>
+                                        <p class="class-year">Class of 2027</p>
+                                    </div>
+                                    <div class="subject-list">
+                                        <h4>Selected courses:</h4>
+                                        <ul>
+                                            <li>AP Microeconomics</li>
+                                            <li>AP Biology</li>
+                                            <li>AP Physics</li>
+                                            <li>Honors Pre-Calculus</li>
+                                            <li>Government and Economics</li>
+                                            <li>French I - III</li>
+                                        </ul>
+                                        <h4>AP Exams:</h4>
+                                        <ul>
+                                            <li>AP Biology - 5</li>
+                                            <li>AP Chinese Language and Culture - 4</li>
+                                            <li>AP Spanish Language and Culture - 3</li>
+                                        </ul>
+                                        <h4>SAT: 1500 (Math 780, English 720)</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Euro Challenge -->
+                        <div class="academic-card" id="card-euro">
+                            <div class="card-header">
+                                <img src="assets/Euro-Challenge-Logo.png" class="card-logo"
+                                    onerror="this.src='https://via.placeholder.com/64?text=Euro'">
+                                <h3>Euro Challenge 2025</h3>
+                                <div class="card-status">VIEW DETAIL</div>
+                            </div>
+                            <div class="card-expanded-content">
+                                <div class="card-hero-container">
+                                    <img src="assets/Euro-Challenge-2025-Bronx-Sience-Spain-Growth-Semifinals.jpg"
+                                        class="card-hero"
+                                        onerror="this.src='https://via.placeholder.com/1200x800?text=Bronx+Science+Class'">
+                                </div>
+                                <div class="card-details">
+                                    <div class="institution-meta">
+                                        <a href="https://www.euro-challenge.org" target="_blank"
+                                            class="institution-link">
+                                            Euro Challenge – Spanish Economy Research
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                        </a>
+                                        <p class="class-year">Academic competition analyzing Spain’s economic growth and competitiveness</p>
+                                        <p class="class-year">National Semifinalist</p>
+                                    </div>
+                                    <div class="subject-list">
+                                        <h4>Competition Overview:</h4>
+                                        <ul>
+                                            <li>Participated as a sophomore at Bronx Science with classmates Bryan,
+                                                Isaac, and Sarim, under the guidance of Mr. Uceda</li>
+                                            <li>Researched the Spanish economy on the theme of Growth, Competitiveness,
+                                                and Prosperity</li>
+                                            <li>Presented findings at the New York Regional Round in March 2025 and
+                                                advanced to the Semifinals in Manhattan in April 2025</li>
+                                            <li>Gained valuable insights into the Spanish economy and its future growth
+                                                challenges</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="card-resources">
+                                    <div class="resource-item">
+                                        <h4>Presentation Slides:</h4>
+                                        <a href="assets/Euro-Challenge-2025-Bronx-Science-Slides.pdf" target="_blank"
+                                            class="resource-link">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z">
+                                                </path>
+                                                <polyline points="14 2 14 8 20 8"></polyline>
+                                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                                <polyline points="10 9 9 9 8 9"></polyline>
+                                            </svg>
+                                            View Presentation Slides (PDF)
+                                        </a>
+                                    </div>
+                                    <div class="resource-item">
+                                        <h4>Presentation Video:</h4>
+                                        <div class="video-wrapper">
+                                            <iframe width="560" height="315" src="https://www.youtube.com/embed/f3VhpPIK0xI?si=o-0WFb3d91wBC7VW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Fed Challenge -->
+                        <div class="academic-card" id="card-fed">
+                            <div class="card-header">
+                                <img src="assets/High-School-Fed-Challenge-Logo.jpeg" class="card-logo" onerror="this.src='https://via.placeholder.com/64?text=Fed'">
+                                <h3>High School Fed Challenge 2026</h3>
+                                <div class="card-status">VIEW DETAIL</div>
+                            </div>
+                            <div class="card-expanded-content">
+                                <div class="card-hero-container">
+                                    <img src="assets/High-School-Fed-Challenge.jpeg" class="card-hero" onerror="this.src='https://via.placeholder.com/1200x800?text=High+School+Fed+Challenge'">
+                                </div>
+                                <div class="card-details">
+                                    <div class="institution-meta">
+                                        <a href="https://www.newyorkfed.org/outreach-and-education/high-school/high-school-fed-challenge" target="_blank" class="institution-link">
+                                            Fed Challenge 2026 – The Economics of Music
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                        </a>
+                                        <p class="class-year">Economic Research Competition where we studied the rise in concert ticket prices</p>
+                                    </div>
+                                    <div class="subject-list">
+                                        <h4>Competition Overview:</h4>
+                                        <ul>
+                                            <li>Participated as a junior at Bronx Science with classmates Bryan, Isaac, Louis, Lucas, and Sarim, under the guidance of Mr. Massimi and Mr. Fialkow</li>
+                                            <li>Researched the economic factors behind the rise in concert ticket prices</li>
+                                            <li>Analyzed the effects of rising prices on both fans and musical artists</li>
+                                            <li>Developed an understanding of market dynamics and pricing in the entertainment industry</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="card-resources">
+                                    <div class="resource-item">
+                                        <h4>Submission:</h4>
+                                        <a href="assets/High-School-Fed-Challenge-2025-2026-Bronx-Science-Submission.pdf" target="_blank" class="resource-link">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                            View Submission Paper (PDF)
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Research -->
+                        <div class="academic-card" id="card-research">
+                            <div class="card-header">
+                                <img src="assets/research-logo.png" class="card-logo" onerror="this.src='https://via.placeholder.com/64?text=Research'">
+                                <h3>Independent Research Project</h3>
+                                <div class="card-status">VIEW DETAIL</div>
+                            </div>
+                            <div class="card-expanded-content">
+                                <div class="card-hero-container">
+                                    <img src="assets/Chou-Esteban_Gui-2026-Paper-Image-Summary.png" class="card-hero" onerror="this.src='https://via.placeholder.com/1200x800?text=Research+Paper+Summary'">
+                                </div>
+                                <div class="card-details">
+                                    <div class="institution-meta">
+                                        <a href="https://www.bxscience.edu" target="_blank" class="institution-link">
+                                            Economic Research on Concert Ticket Markets
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                        </a>
+                                        <p class="class-year">Study of market dynamics through economic experiments</p>
+                                    </div>
+                                    <div class="subject-list">
+                                        <h4>Research Overview:</h4>
+                                        <ul>
+                                            <li>Conducted an economics experiment and survey with classmate Louis Gui as part of research for the High School Fed Challenge</li>
+                                            <li>Replicated a posted-offer market, similar to the reseller market for concert tickets</li>
+                                            <li>Observed results differed from expectations: traded prices were not above equilibrium as prior studies suggested</li>
+                                            <li>Determined the discrepancy was due to violations of three precepts of Smith’s Induced Value Theory</li>
+                                            <li>Co-authored a companion paper documenting the experiment, results, and analysis</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="research-abstract">
+                                    <h4>Abstract:</h4>
+                                    <p class="abstract-text">
+                                        This paper examines price formation in a posted-offer market designed to simulate concert ticket resale platforms, where sellers set prices and buyers decide whether to accept them without negotiation. The experiment was conducted using VeconLab with 36 student participants across eight trading rounds. Randomly assigned buyer values and seller costs allowed for the construction of theoretical supply and demand curves and a predicted competitive equilibrium.
+                                        Transaction prices increased over the course of the experiment, but most trades occurred below the theoretical equilibrium price and overall market efficiency was approximately 75 percent. This result differs from prior posted-offer market experiments, where prices typically exceed equilibrium. The divergence is likely explained by violations of the monotonicity, salience, and dominance precepts of induced value theory due to the use of extra credit rather than monetary incentives and the remote experimental environment.
+                                    </p>
+                                </div>
+
+                                <div class="paper-citation">
+                                    Chou-Esteban, A., & Gui, L. (2026). Pricing Without Negotiation: Experimental Evidence from a Simulated Concert Ticket Market [Unpublished manuscript]. The Bronx High School of Science.
+                                </div>
+
+                                <div class="card-resources">
+                                    <div class="resource-item">
+                                        <h4>Full Manuscript:</h4>
+                                        <a href="assets/Chou-Esteban_Gui-2026-Pricing-Without-Negotiation-Experimental-Evidence-from-a-Simulated-Concert-Ticket-Market.pdf" target="_blank" class="resource-link">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                            View Paper (PDF)
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section4" class="slide-section">
+                <div class="section-content">
+                    <span class="section-num">04</span>
+                    <h2>Entrepreneurship</h2>
+
+                   <div class="academic-grid">
+                        <!-- Card 1: BxSci Merch -->
+                        <div class="academic-card" id="card-merch">
+                            <div class="card-header">
+                                <img src="assets/Bronx-Science-Armada-Logo.jpg" class="card-logo">
+                                <h3>Bronx Science Fencing Merch (Ongoing)</h3>
+                                <div class="card-status">VIEW DETAIL</div>
+                            </div>
+                            <div class="card-expanded-content">
+                                <div class="card-hero-container">
+                                    <img src="assets/Bronx-Science-Fencing-Fundraising-Hoodie.jpg" class="card-hero">
+                                </div>
+                                <div class="card-details">
+                                    <div class="institution-meta">
+                                        <a href="https://www.bxscience.edu" target="_blank" class="institution-link">
+                                            Bronx Science Fencing Fundraising Merch (2004-present)
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6">
+                                                </path>
+                                                <polyline points="15 3 21 3 21 9"></polyline>
+                                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                                            </svg>
+                                        </a>
+                                        <p class="class-year">Designing and selling merchandise to support the fencing team</p>
+                                    </div>
+                                    <div class="subject-list">
+                                        <h4>Role & Responsibilities:</h4>
+                                        <ul>
+                                            <li>Designing, procuring, and selling t-shirts and hoodies to raise funds for the Bronx Science fencing team</li>
+                                            <li>Contributing to branding and promotion of team merchandise</li>
+                                            <li>Supporting fundraising efforts to benefit the fencing program</li>
+                                            <li>Have gained experience in product design, supply management, and small-scale entrepreneurship</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Depop -->
+                        <div class="academic-card" id="card-depop">
+                            <div class="card-header">
+                                <img src="assets/Depop-Logo.png" class="card-logo">
+                                <h3>Online Reselling Store (Discontinued)</h3>
+                                <div class="card-status">VIEW DETAIL</div>
+                            </div>
+                            <div class="card-expanded-content">
+                                <div class="card-hero-container">
+                                    <img src="assets/Depop-Logo-Long.jpeg" class="card-hero">
+                                </div>
+                                <div class="card-details">
+                                    <div class="institution-meta">
+                                        <a href="https://www.depop.com" target="_blank"
+                                            class="institution-link">
+                                            Online Reselling Business (2004)
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6">
+                                                </path>
+                                                <polyline points="15 3 21 3 21 9"></polyline>
+                                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                                            </svg>
+                                        </a>
+                                        <p class="class-year">Independent e-commerce venture selling fashion items</p>
+                                    </div>
+                                    <div class="subject-list">
+                                        <h4>Business Overview:</h4>
+                                        <ul>
+                                            <li>Sourced accessories and clothing from overseas manufacturers and sold them on depop.com</li>
+                                            <li>Managed product selection, pricing, and online listings</li>
+                                            <li>Handled sales, customer interactions, and order fulfillment</li>
+                                            <li>Gained experience in e-commerce operations, sourcing, and small-scale retail management</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section5" class="slide-section">
+                <div class="section-content">
+                    <span class="section-num">05</span>
+                    <h2>Service</h2>
+
+                   <div class="academic-grid">
+                        <!-- Card 1: Senior Care Volunteer -->
+                        <div class="academic-card" id="card-senior">
+                            <div class="card-header">
+                                <img src="assets/Golden-Eagle-Logo.jpeg" class="card-logo">
+                                <h3>Senior Care Center Volunteering</h3>
+                                <div class="card-status">VIEW DETAIL</div>
+                            </div>
+                            <div class="card-expanded-content">
+                                <div class="card-hero-container">
+                                    <img src="assets/Pau-Chou-Esteban-Golden-Eagle-Volunteer.jpg" class="card-hero">
+                                </div>
+                                <div class="card-details">
+                                    <div class="institution-meta">
+                                        <a href="https://goldeneagleseniorcare.com/" target="_blank" class="institution-link">
+                                            Senior Care Community Service (2004-present)
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6">
+                                                </path>
+                                                <polyline points="15 3 21 3 21 9"></polyline>
+                                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                                            </svg>
+                                        </a>
+                                        <p class="class-year">Assisting and engaging with residents at a Mandarin-speaking senior care center</p>
+                                    </div>
+                                    <div class="subject-list">
+                                        <h4>Service Contributions:</h4>
+                                        <ul>
+                                            <li>Visiting Golden Eagle, a Chinese senior care center, on a regular basis to assist residents with their needs</li>
+                                            <li>Supporting and engaging with senior residents through direct assistance and interaction</li>
+                                            <li>Staying connected to the Chinese-speaking community and contributing through service</li>
+                                            <li>Have gained experience in communication, empathy, and community engagement</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: BxSci Girls Fencing Team -->
+                        <div class="academic-card" id="card-depop">
+                            <div class="card-header">
+                                <img src="assets/Bronx-Science-Girls-Fencing-Logo.jpg" class="card-logo">
+                                <h3>Bronx Science Girls Fencing Team Manager</h3>
+                                <div class="card-status">VIEW DETAIL</div>
+                            </div>
+                            <div class="card-expanded-content">
+                                <div class="card-details">
+                                    <div class="institution-meta">
+                                        <a href="https://www.instagram.com/bxsci.fencing/" target="_blank"
+                                            class="institution-link">
+                                            Fencing Team Management
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6">
+                                                </path>
+                                                <polyline points="15 3 21 3 21 9"></polyline>
+                                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                                            </svg>
+                                        </a>
+                                        <p class="class-year">Supporting team operations and developing leadership skills</p>
+                                    </div>
+                                    <div class="subject-list">
+                                        <h4>Leadership & Responsibilities:</h4>
+                                        <ul>
+                                            <li>Managed the girls’ fencing team at Bronx High School of Science</li>
+                                            <li>Assisted with team organization, logistics, and daily operations</li>
+                                            <li>Gained experience in leadership, teamwork, and program management</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="section6" class="slide-section">
+                <div class="section-content">
+                    <span class="section-num">06</span>
+                    <h2>Fencing</h2>
+
+                    <div class="academic-grid">
+                        <!-- Card 1: Fencing Team -->
+                        <div class="academic-card" id="card-bronx">
+                            <div class="card-header">
+                                <img src="assets/Bronx-Science-Fencing-Logo.jpg" class="card-logo">
+                                <h3>Varsity</h3>
+                                <div class="card-status">VIEW DETAIL</div>
+                            </div>
+                            <div class="card-expanded-content">
+                                <div class="card-hero-container">
+                                    <img src="assets/Pau-Chou-Esteban-2025-PSAL-Championship-3rd-Place.jpg" class="card-hero">
+                                </div>
+                                <div class="card-details">
+                                    <div class="institution-meta">
+                                        <a href="https://www.instagram.com/bxsci.fencing/" target="_blank" class="institution-link">
+                                            Boys Varsity Fencing Team - Bronx Science - Épée & Foil
+                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6">
+                                                </path>
+                                                <polyline points="15 3 21 3 21 9"></polyline>
+                                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                                            </svg>
+                                        </a>
+                                        <p class="class-year">Individual and team varsity fencing experience, developing leadership and earning a Bronze Medal in individual NYC Foil championships</p>
+                                    </div>
+                                    <div class="subject-list">
+                                        <h4>Team Achievements & Development:</h4>
+                                        <ul>
+                                            <li>Proud member of the Bronx Science Varsity Fencing Team since freshman year</li>
+                                            <li>Competing in both Épée and Foil</li>
+                                            <li>Bronze Medal in the 2025 NYC PSAL Foil Championships</li>
+                                            <li>Voted Most Improved Player in 2023 and MVP in 2024</li>
+                                            <li>Aspiring future captain for the 2026 season</li>
+                                            <li>Developed discipline, resilience, and leadership through competition and providing strip-side coaching to teammates</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Epee -->
+                        <div class="academic-card" id="card-euro">
+                            <div class="card-header">
+                                <img src="assets/Northshore-Fencers-Club-Logo.jpg" class="card-logo">
+                                <h3>EPEE</h3>
+                                <div class="card-status">VIEW DETAIL</div>
+                            </div>
+                            <div class="card-expanded-content">
+                                <div class="card-hero-container">
+                                    <img src="assets/Pau-Chou-Esteban-Fencing-Epee.jpg" class="card-hero">
+                                </div>
+                                <div class="card-details">
+                                    <div class="subject-list">
+                                        <h3><a href="https://fencingtracker.com/p/100507831/Pau-Chou-Esteban" target="_blank"
+                                            class="regular-link">
+                                             Fencing Traker Profile 
+                                           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                        </a>
+                                        </h3>
+                                        <p>
+                                            <h3>Club:</h3>
+                                            
+                                                <a href="https://northshorefc.com/" target="_blank" class="regular-link">
+                                                North Shore Fencers Club
+                                                </a>
+                                        </p>
+                                        <p>
+                                            <h3>Head coach:</h3>
+                                                <a href="https://northshorefc.com/alexander-v-gofman/" target="_blank" class="regular-link">
+                                                Alexander Gofman
+                                               </a>
+                                        </p>                                           
+                                         <p>
+                                            <h3> Private lessons coach:</h3>
+                                                <a href="https://northshorefc.com/coach-ivan-zagoruiko" target="_blank" class="regular-link">
+                                                Ivan Zagoruiko
+                                                </a>
+                                        </p>                                           
+                                    </div>
+                                    <div class="subject-list">
+                                        <h4>Overview:</h4>
+                                        <ul>
+                                            <li>B25 rated</li>
+                                            <li>Qualified for 2026 Junior Olympics and 2026 July National Championships (Summer Nationals)</li>
+                                         </ul>
+                                    </div>
+                                    <div class="subject-list">
+                                        <h4> Medals (7):</h4>
+                                        <h4> Gold (4):</h4>
+                                        <ul>
+                                            <li>
+                                                <a href="https://www.askfred.net/events/9671c876-c1ac-415a-b5f9-a9c49489f79f/round/2?highlight_id=7156aa38-60bf-47d9-9d42-209d3fb4e6de" target="_blank" class="regular-link">
+                                                Swarthmore College Phoenix Cup (Mar. 2025)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.askfred.net/events/a5eae141-5392-419c-8290-b215e4c6015d/round/2?highlight_id=7156aa38-60bf-47d9-9d42-209d3fb4e6de" target="_blank" class="regular-link">
+                                                H3's Senior & Youth Tournament (Mar. 2025)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.askfred.net/events/e8741056-17c9-4d24-ad3d-5cb945e2b7ea/round/2?highlight_id=7156aa38-60bf-47d9-9d42-209d3fb4e6de" target="_blank" class="regular-link">
+                                                SITS D & Under Epee (Feb. 2025)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://fencingtracker.com/event/27625/results" target="_blank" class="regular-link">
+                                                SIFC Classic (Nov. 2024)
+                                                </a>
+                                            </li>
+                                        <h4> Silver (2):</h4>
+                                        <ul>
+                                            <li>
+                                                <a href="https://www.askfred.net/events/47a06614-451e-4f08-b26b-c32f5dad958c/round/2?highlight_id=7156aa38-60bf-47d9-9d42-209d3fb4e6de" target="_blank" class="regular-link">
+                                                H3 Oreo Cup 2026 (Jan. 2026)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.askfred.net/events/17ddc398-9a99-403f-ae65-2a463da58493/round/2?highlight_id=7156aa38-60bf-47d9-9d42-209d3fb4e6de" target="_blank" class="regular-link">
+                                               Manchen Friday Night "E & Under" Epee (Jan. 2025)
+                                                </a>
+                                            </li>
+                                        <h4> Bronze (3):</h4>
+                                        <ul>
+                                            <li>
+                                                <a href="https://www.askfred.net/events/c88225bc-fe10-4192-a5b0-e6fee56b22b6/round/2?highlight_id=7156aa38-60bf-47d9-9d42-209d3fb4e6de" target="_blank" class="regular-link">
+                                                2025 RPI Spring Open (Mar. 2025)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.askfred.net/events/6696bb6d-e1d7-48dd-84e6-b362beaaf632/round/2?highlight_id=7156aa38-60bf-47d9-9d42-209d3fb4e6de" target="_blank" class="regular-link">
+                                                Division II at Fencers Club (Mar. 2025)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.askfred.net/events/3c676c8b-3c11-4b34-be4e-296bd533029e/round/2?highlight_id=7156aa38-60bf-47d9-9d42-209d3fb4e6de" target="_blank" class="regular-link">
+                                                H3 New Year Tournament (Jan. 2025)
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Foil -->
+                        <div class="academic-card" id="card-fed">
+                            <div class="card-header">
+                                <img src="assets/East-Coast-Fencing-Club-Logo.jpeg" class="card-logo">
+                                <h3>FOIL</h3>
+                                <div class="card-status">VIEW DETAIL</div>
+                            </div>
+                            <div class="card-expanded-content">
+                                <div class="card-hero-container">
+                                    <img src="assets/Pau-Chou-Esteban-Fencing-Foil.jpg" class="card-hero">
+                                </div>
+                                <div class="card-details">
+                                    <div class="subject-list">
+                                        <h3><a href="https://fencingtracker.com/p/100507831/Pau-Chou-Esteban" target="_blank"
+                                            class="regular-link">
+                                             Fencing Traker Profile 
+                                           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                        </a>
+                                        </h3>
+                                        <p>
+                                            <h3>Club:</h3>
+                                                <a href="https://northshorefc.com/" target="_blank" class="regular-link">
+                                                East Coast Fencing Club
+                                                </a>
+                                        </p>
+                                        <p>
+                                            <h3>Head coach:</h3>
+                                                <a href="https://www.eastcoastfencingclub.com/coaches" target="_blank" class="regular-link">
+                                                Gidon Retzkin
+                                                </a>
+                                        </p>                                           
+                                        <p>
+                                            <h3> Private lessons coach:</h3>
+                                            
+                                                <a href="https://www.eastcoastfencingclub.com/coaches" target="_blank" class="regular-link">
+                                                Brendan Meyers
+                                                </a>
+                                        </p>                                           
+                                    </div>
+                                    <div class="subject-list">
+                                        <h4>Overview:</h4>
+                                        <ul>
+                                            <li>D25 rated</li>
+                                            <li>Qualified for 2025 and 2026 Junior Olympics and 2025 and 2026 July National Championships (Summer Nationals)</li>
+                                         </ul>
+                                    </div>
+                                    <div class="subject-list">
+                                        <h4> Medals (7):</h4>
+                                        <h4> Gold (4):</h4>
+                                        <ul>
+                                            <li>
+                                                <a href="https://www.askfred.net/events/465cc309-bd99-4424-aa78-df63c38d72cb/round/2?highlight_id=7156aa38-60bf-47d9-9d42-209d3fb4e6de" target="_blank" class="regular-link">
+                                                Summer Nationals Foil Metro Division Qualifier (Apr. 2025)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.askfred.net/events/019a6f12-a944-4cc1-a192-f41c8af9c241/round/2?highlight_id=7156aa38-60bf-47d9-9d42-209d3fb4e6de" target="_blank" class="regular-link">
+                                                SIFC CLASSIC (Sep. 2024)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.askfred.net/events/67df7b80-c308-471d-9833-ba1bfa05f663/round/2?highlight_id=7156aa38-60bf-47d9-9d42-209d3fb4e6de" target="_blank" class="regular-link">
+                                                Shoreline Fencer's E&Under Tournament (Sep. 2024)
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.askfred.net/events/77e47fe0-daa1-41bd-934d-679dc67c2b64/round/2?highlight_id=7156aa38-60bf-47d9-9d42-209d3fb4e6de" target="_blank" class="regular-link">
+                                                NJFA Foil Cup (July. 2024)
+                                                </a>
+                                            </li>
+                                        <h4> Silver (1):</h4>
+                                        <ul>
+                                            <li>
+                                                <a href="https://fencingtracker.com/event/28245/results" target="_blank" class="regular-link">
+                                                Metro Division Junior Olympic Foil Qualifier (Dec. 2026)
+                                                </a>
+                                            </li>
+                                        <h4> Bronze (2):</h4>
+                                        <ul>
+                                            <li>
+                                                NYC PSAL Foil Championship (Oct. 2025) 
+                                            </li>
+                                            <li>
+                                                <a href="https://www.askfred.net/events/b3b770c5-9540-49a2-8f7e-c53d4df6c115/round/2?highlight_id=7156aa38-60bf-47d9-9d42-209d3fb4e6de" target="_blank" class="regular-link">
+                                                Manhattan Fencing Center Foil Liberty Cup (Oct. 2024)
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Camps -->
+                        <div class="academic-card" id="card-research">
+                            <div class="card-header">
+                                <img src="assets/France-Fencing-Camps.jpg" class="card-logo">
+                                <h3>Camps</h3>
+                                <div class="card-status">VIEW DETAIL</div>
+                            </div>
+                            <div class="card-expanded-content">
+                                <div class="card-hero-container">
+                                    <img src="assets/Pau-Chou-Esteban-Fencing-Camp.jpg" class="card-hero">
+                                </div>
+                                <div class="card-details">
+                                    <div class="subject-list">
+                                        <img src="assets/Fencing-Camp-Foil.jpg" class="card-logo">
+                                        <h3>Foil</h3>
+                                            <h4>
+                                                <a href="https://escrime-paysdaix.fr/epaaix/events/international-fencing-camp-summer-2025/" target="_blank" class="regular-link">
+                                                ASCC Foil Summer Camp – Aix-en-Provence, France
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                                </a>
+                                            </h4>
+                                        <ul>
+                                            <li>Attended ASCC Foil Summer Camp in Aix-en-Provence, France (August 2–8, 2025)</li>
+                                            <li>Trained under elite international coaches, including former national team athletes and European champions</li>
+                                            <li>Competed and practiced with top young fencers from France and worldwide</li>
+                                            <li>Focused on foil-specific technique, footwork, strategy, and psychomotor skill development</li>
+                                            <li>Participated in strength and conditioning sessions to enhance athletic performance</li>
+                                            <li>Gained exposure to high-level coaching and competitive fencing culture</li>
+                                         </ul>
+                                    </div>
+                                    <div class="subject-list">
+                                        <img src="assets/Fencing-Camp-Epee.jpg" class="card-logo">
+                                        <h3>Epee</h3>
+                                            <h4>
+                                                <a href="https://www.stage-escrime-defiplus.com/stage-aout/" target="_blank" class="regular-link">
+                                                Naucelle Épée Summer Camp – Aveyron, France
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                                </a>
+                                            </h4>
+                                       <ul>
+                                            <li>Attended Naucelle Épée Summer Camp in Aveyron, France (August 16-22, 2025)</li>
+                                            <li>Trained under expert coaches, with individualized and group sessions for all levels</li>
+                                            <li>Focused on épée technique, themed bouts, fundamental drills, and individual/team competitions</li>
+                                            <li>Completed daily physical conditioning and personalized training programs</li>
+                                            <li>Participated in multi-sport challenges, triathlon, and team-based activities to enhance fitness and teamwork</li>
+                                            <li>Received feedback and training plans to optimize preparation for the upcoming fencing season</li>
+                                            <li>Gained international exposure and advanced competitive and tactical skills</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
