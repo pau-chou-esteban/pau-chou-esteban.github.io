@@ -1290,11 +1290,12 @@ footer a:hover { color: #fff; }
     }
     requestAnimationFrame(render);
   }
+  if (isMobile) canvas.style.display = 'none';
   render();
 
-  // Mouse / touch tracking
+  // Mouse / touch tracking — desktop only, mobile uses split view
   function handleMove(clientX) {
-    // Only active when hero is in view
+    if (isMobile) return;
     const hero = document.getElementById('heroWrapper');
     if (hero && window.scrollY < hero.offsetHeight) {
       targetProgress = Math.max(0, Math.min(1, clientX / window.innerWidth));
