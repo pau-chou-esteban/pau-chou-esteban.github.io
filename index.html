@@ -1323,6 +1323,13 @@ function toggleCard(card) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+  function getCardTop(card) {
+    // Walk up offsetParent chain for accurate position
+    let top = 0, el = card;
+    while (el) { top += el.offsetTop; el = el.offsetParent; }
+    return top;
+  }
+
   document.querySelectorAll('.exp-card').forEach(function(card) {
     card.style.touchAction = 'manipulation';
     card.addEventListener('click', function(e) {
@@ -1333,18 +1340,16 @@ document.addEventListener('DOMContentLoaded', function() {
       const otherIsOpen = openCard && openCard !== card;
 
       if (otherIsOpen) {
-        // Close the open card first, then after animation completes open the new one
         openCard.classList.remove('open');
         setTimeout(function() {
           if (!isOpen) {
             card.classList.add('open');
-            const targetScroll = card.getBoundingClientRect().top + window.scrollY - 80;
+            const targetScroll = getCardTop(card) - 80;
             window.scrollTo({ top: targetScroll, behavior: 'smooth' });
           }
-        }, 480); // match the card-body transition duration (0.5s)
+        }, 480);
       } else {
-        // No other card open — toggle immediately
-        const targetScroll = card.getBoundingClientRect().top + window.scrollY - 80;
+        const targetScroll = getCardTop(card) - 80;
         toggleCard(card);
         if (!isOpen) window.scrollTo({ top: targetScroll, behavior: 'smooth' });
       }
