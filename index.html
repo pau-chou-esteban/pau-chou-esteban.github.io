@@ -40,7 +40,10 @@ body { font-family: var(--font-b); background: var(--sec-a); color: var(--navy);
   transform: translateY(28px);
   transition: opacity 0.6s cubic-bezier(.22,.68,0,1.2), transform 0.6s cubic-bezier(.22,.68,0,1.2);
 }
-.reveal.visible { opacity: 1; transform: none; }
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
 .reveal-delay-1 { transition-delay: 0.08s; }
 .reveal-delay-2 { transition-delay: 0.16s; }
 .reveal-delay-3 { transition-delay: 0.24s; }
@@ -118,6 +121,9 @@ nav {
   z-index: 20;
   pointer-events: none;
   transition: opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .hero-overlay-right {
   position: absolute;
@@ -126,6 +132,9 @@ nav {
   pointer-events: none;
   text-align: right;
   transition: opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 /* Small label row above the big word */
@@ -224,9 +233,49 @@ nav {
 @keyframes sArrow { 0%{transform:scaleY(0);transform-origin:top;opacity:0} 50%{transform:scaleY(1);transform-origin:top;opacity:1} 100%{transform:scaleY(1);transform-origin:bottom;opacity:0} }
 
 @media (max-width: 768px) {
-  .hero-overlay-left  { left: 32px; bottom: 80px; }
-  .hero-overlay-right { right: 32px; bottom: 80px; }
-  .hero-word { font-size: 18vw; }
+  /* STRATEGIST — higher up, subtitle below */
+  .hero-overlay-left {
+    left: 0; right: 0;
+    bottom: 115px;
+    top: auto;
+    width: 100%;
+    max-width: none;
+    overflow: visible;
+    display: flex;
+    flex-direction: column-reverse; /* subtitle below word */
+    align-items: flex-start;
+    padding: 0 12px;
+    box-sizing: border-box;
+  }
+  /* ATHLETE — lower, subtitle above */
+  .hero-overlay-right {
+    left: 0; right: 0;
+    bottom: 20px;
+    top: auto;
+    width: 100%;
+    max-width: none;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 0 12px;
+    text-align: right;
+    box-sizing: border-box;
+  }
+  /* font size small enough to fit without clipping */
+  .hero-word { font-size: clamp(44px, 15vw, 72px); white-space: nowrap; writing-mode: unset; transform: none; }
+  /* subtitle spacing: line-height 1.5 × 10px = 15px gap between subtexts */
+  .hero-sub-label {
+    display: block;
+    font-size: 10px;
+    line-height: 1.5;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  /* add bottom margin to strategist subtitle = same as line-height (15px) */
+  .hero-overlay-left .hero-sub-label  { margin-bottom: 15px; }
+  /* add top margin to athlete subtitle = same as line-height (15px) */
+  .hero-overlay-right .hero-sub-label { margin-top: 15px; }
 }
 
 /* ─── SECTION WRAPPERS ───────────────────── */
@@ -263,6 +312,7 @@ nav {
   border-radius: var(--r-lg);
   overflow: hidden;
   cursor: pointer;
+  touch-action: manipulation;
   transition: box-shadow 0.25s, transform 0.25s;
   margin-bottom: 18px;
 }
@@ -453,11 +503,13 @@ footer a:hover { color: #fff; }
   border-bottom: 1px solid rgba(255,255,255,0.08);
   transform: translateY(-8px);
   opacity: 0;
+  pointer-events: none;
   transition: opacity 0.2s, transform 0.2s;
 }
 .mobile-nav-drawer.open {
   opacity: 1;
   transform: translateY(0);
+  pointer-events: auto;
 }
 .mobile-nav-drawer a {
   display: block;
@@ -574,13 +626,13 @@ footer a:hover { color: #fff; }
   </div>
 
   <div class="hero-overlay-left" id="heroValor">
-    <span class="hero-word">Strategist</span>
     <span class="hero-sub-label">Business · Research · Entrepreneurship<br/>Bronx High School of Science, Class of 2027</span>
+    <span class="hero-word">Strategist</span>
   </div>
 
   <div class="hero-overlay-right" id="heroLogic">
-    <span class="hero-word">Athlete</span>
     <span class="hero-sub-label">Épée · Foil · Varsity &amp; Club<br/>B25 Épée · C26 Foil · Junior Olympics qualifier</span>
+    <span class="hero-word">Athlete</span>
   </div>
 
   <div class="hero-scroll-hint">
@@ -624,7 +676,7 @@ footer a:hover { color: #fff; }
     <h2 class="section-title reveal">Research &amp; Achievement</h2>
 
     <!-- 01 Bronx Science -->
-    <div class="exp-card reveal reveal-delay-1" onclick="toggleCard(this)">
+    <div class="exp-card reveal reveal-delay-1">
       <div class="card-head">
         <div class="card-head-top">
           <div class="card-thumb"><img src="assets/Bronx-Science-Logo.jpeg" alt="Bronx Science" /></div>
@@ -660,7 +712,7 @@ footer a:hover { color: #fff; }
     </div>
 
     <!-- 02 Euro Challenge -->
-    <div class="exp-card reveal reveal-delay-2" onclick="toggleCard(this)">
+    <div class="exp-card reveal reveal-delay-2">
       <div class="card-head">
         <div class="card-head-top">
           <div class="card-thumb"><img src="assets/Euro-Challenge-Logo.png" alt="Euro Challenge" /></div>
@@ -695,7 +747,7 @@ footer a:hover { color: #fff; }
     </div>
 
     <!-- 03 Fed Challenge -->
-    <div class="exp-card reveal reveal-delay-3" onclick="toggleCard(this)">
+    <div class="exp-card reveal reveal-delay-3">
       <div class="card-head">
         <div class="card-head-top">
           <div class="card-thumb"><img src="assets/High-School-Fed-Challenge-Logo.jpeg" alt="Fed Challenge" /></div>
@@ -727,7 +779,7 @@ footer a:hover { color: #fff; }
     </div>
 
     <!-- 04 Research Paper -->
-    <div class="exp-card reveal reveal-delay-4" onclick="toggleCard(this)">
+    <div class="exp-card reveal reveal-delay-4">
       <div class="card-head">
         <div class="card-head-top">
           <div class="card-thumb"><img src="assets/research-logo.jpg" alt="Research" /></div>
@@ -775,7 +827,7 @@ footer a:hover { color: #fff; }
     <h2 class="section-title reveal">Building &amp; Selling</h2>
     <div class="cards-grid">
 
-      <div class="exp-card reveal reveal-delay-1" onclick="toggleCard(this)">
+      <div class="exp-card reveal reveal-delay-1">
         <div class="card-head">
           <div class="card-head-top">
             <div class="card-thumb"><img src="assets/Bronx-Science-Armada-Logo.jpg" alt="Bronx Science Fencing" /></div>
@@ -804,7 +856,7 @@ footer a:hover { color: #fff; }
         </div>
       </div>
 
-      <div class="exp-card reveal reveal-delay-2" onclick="toggleCard(this)">
+      <div class="exp-card reveal reveal-delay-2">
         <div class="card-head">
           <div class="card-head-top">
             <div class="card-thumb"><img src="assets/Depop-Logo.png" alt="Depop" /></div>
@@ -844,7 +896,7 @@ footer a:hover { color: #fff; }
     <h2 class="section-title reveal">Service &amp; Leadership</h2>
     <div class="cards-grid">
 
-      <div class="exp-card reveal reveal-delay-1" onclick="toggleCard(this)">
+      <div class="exp-card reveal reveal-delay-1">
         <div class="card-head">
           <div class="card-head-top">
             <div class="card-thumb"><img src="assets/Golden-Eagle-Logo.jpeg" alt="Golden Eagle" /></div>
@@ -872,7 +924,7 @@ footer a:hover { color: #fff; }
         </div>
       </div>
 
-      <div class="exp-card reveal reveal-delay-2" onclick="toggleCard(this)">
+      <div class="exp-card reveal reveal-delay-2">
         <div class="card-head">
           <div class="card-head-top">
             <div class="card-thumb"><img src="assets/Bronx-Science-Girls-Fencing-Logo.jpg" alt="Girls Fencing" /></div>
@@ -912,7 +964,7 @@ footer a:hover { color: #fff; }
     <h2 class="section-title reveal">Fencing</h2>
 
     <!-- 01 Varsity -->
-    <div class="exp-card reveal reveal-delay-1" onclick="toggleCard(this)">
+    <div class="exp-card reveal reveal-delay-1">
       <div class="card-head">
         <div class="card-head-top">
           <div class="card-thumb"><img src="assets/Bronx-Science-Fencing-Logo.jpg" alt="Varsity Fencing" /></div>
@@ -943,7 +995,7 @@ footer a:hover { color: #fff; }
     </div>
 
     <!-- 02 Épée -->
-    <div class="exp-card reveal reveal-delay-2" onclick="toggleCard(this)">
+    <div class="exp-card reveal reveal-delay-2">
       <div class="card-head">
         <div class="card-head-top">
           <div class="card-thumb"><img src="assets/Northshore-Fencers-Club-Logo.jpg" alt="North Shore FC" /></div>
@@ -992,7 +1044,7 @@ footer a:hover { color: #fff; }
     </div>
 
     <!-- 03 Foil -->
-    <div class="exp-card reveal reveal-delay-3" onclick="toggleCard(this)">
+    <div class="exp-card reveal reveal-delay-3">
       <div class="card-head">
         <div class="card-head-top">
           <div class="card-thumb"><img src="assets/East-Coast-Fencing-Club-Logo.jpeg" alt="East Coast FC" /></div>
@@ -1039,7 +1091,7 @@ footer a:hover { color: #fff; }
     </div>
 
     <!-- 04 France Camps -->
-    <div class="exp-card reveal reveal-delay-4" onclick="toggleCard(this)">
+    <div class="exp-card reveal reveal-delay-4">
       <div class="card-head">
         <div class="card-head-top">
           <div class="card-thumb"><img src="assets/France-Fencing-Camps.jpg" alt="France Camps" /></div>
@@ -1110,6 +1162,9 @@ footer a:hover { color: #fff; }
     &nbsp;·&nbsp;
     <a href="https://www.instagram.com/bxsci.fencing/" target="_blank">Instagram ↗</a>
   </p>
+  <p style="margin-top: 10px; font-size: 11px; opacity: 0.5;">
+    Site designed by Sangho Kim &nbsp;·&nbsp; Crafted with <a href="https://claude.ai" target="_blank" style="color:rgba(255,255,255,0.55);">Claude</a> by Anthropic
+  </p>
 </footer>
 
 <script>
@@ -1136,6 +1191,19 @@ footer a:hover { color: #fff; }
   const perlin = new Perlin();
   const canvas = document.getElementById('hero-canvas');
   if (!canvas) return;
+
+  // Mobile detection — must happen before render() is called
+  const isMobile = window.innerWidth < 768 || /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  if (isMobile) {
+    // Keep canvas but use larger block size for mobile performance
+    const left  = document.getElementById('heroValor');
+    const right = document.getElementById('heroLogic');
+    if (left)  { left.style.cssText  = 'position:absolute;left:0;right:0;bottom:115px;width:100%;z-index:20;pointer-events:none;display:flex;flex-direction:column-reverse;align-items:flex-start;padding:0 12px;box-sizing:border-box;'; }
+    if (right) { right.style.cssText = 'position:absolute;left:0;right:0;bottom:20px;width:100%;z-index:20;pointer-events:none;display:flex;flex-direction:column;align-items:flex-end;padding:0 12px;text-align:right;box-sizing:border-box;'; }
+  }
+
+
   const ctx = canvas.getContext('2d', { alpha: false });
   const indicator = document.getElementById('hero-indicator');
   const valorOverlay = document.getElementById('heroValor');
@@ -1189,7 +1257,7 @@ footer a:hover { color: #fff; }
     // Draw Scholar with Perlin dissolve
     if (imgA.complete && imgA.naturalWidth > 0) {
       const mA = getDrawMeta(imgA, W, H);
-      const bs = 8, cols = Math.ceil(W/bs), rows = Math.ceil(H/bs);
+      const bs = isMobile ? 20 : 8, cols = Math.ceil(W/bs), rows = Math.ceil(H/bs);
       for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
           const rx = i/cols, ry = j/rows;
@@ -1246,37 +1314,47 @@ function closeMenu() {
   document.getElementById('mobileNav').classList.remove('open');
 }
 
-// ── Accordion: close ALL open cards site-wide, then open the clicked one ──
+// ── Card toggle ──
 function toggleCard(card) {
   const isOpen = card.classList.contains('open');
   document.querySelectorAll('.exp-card.open').forEach(s => s.classList.remove('open'));
   if (!isOpen) card.classList.add('open');
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.exp-card').forEach(function(card) {
+    card.style.touchAction = 'manipulation';
+    card.addEventListener('click', function(e) {
+      if (e.target.closest('a')) return;
+      toggleCard(card);
+    });
+  });
+});
+
 // ── Scroll reveal ──
-// Small page-load delay so elements below the fold stay hidden,
-// and rootMargin fires the reveal just as each element scrolls into view.
 (function() {
   const els = document.querySelectorAll('.reveal');
+  const isMobileReveal = window.innerWidth < 768;
+
   if (!('IntersectionObserver' in window)) {
-    els.forEach(el => el.classList.add('visible'));
+    els.forEach(el => { el.classList.add('visible'); el.style.transitionDelay = '0s'; });
     return;
   }
 
-  // Brief timeout so browser has painted before we start observing,
-  // preventing everything from firing at once on load.
   setTimeout(function() {
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
           e.target.classList.add('visible');
+          setTimeout(() => { e.target.style.transitionDelay = '0s'; }, 700);
           obs.unobserve(e.target);
         }
       });
     }, {
-      rootMargin: '0px 0px -80px 0px',
+      rootMargin: isMobileReveal ? '0px 0px -40px 0px' : '0px 0px -80px 0px',
       threshold: 0
     });
+
     els.forEach(el => obs.observe(el));
   }, 100);
 })();
