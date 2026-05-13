@@ -31,7 +31,7 @@
   --nav-h: 62px;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-anchor: none; }
 body { font-family: var(--font-b); background: var(--sec-a); color: var(--navy); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
 
 /* ─── SCROLL REVEAL ─────────────────────── */
@@ -313,6 +313,7 @@ nav {
   overflow: hidden;
   cursor: pointer;
   touch-action: manipulation;
+  overflow-anchor: none;
   transition: box-shadow 0.25s, transform 0.25s;
   margin-bottom: 18px;
 }
@@ -1326,7 +1327,27 @@ document.addEventListener('DOMContentLoaded', function() {
     card.style.touchAction = 'manipulation';
     card.addEventListener('click', function(e) {
       if (e.target.closest('a')) return;
-      toggleCard(card);
+
+      const isOpen = card.classList.contains('open');
+      const openCard = document.querySelector('.exp-card.open');
+      const otherIsOpen = openCard && openCard !== card;
+
+      if (otherIsOpen) {
+        // Close the open card first, then after animation completes open the new one
+        openCard.classList.remove('open');
+        setTimeout(function() {
+          if (!isOpen) {
+            card.classList.add('open');
+            const targetScroll = card.getBoundingClientRect().top + window.scrollY - 80;
+            window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+          }
+        }, 480); // match the card-body transition duration (0.5s)
+      } else {
+        // No other card open — toggle immediately
+        const targetScroll = card.getBoundingClientRect().top + window.scrollY - 80;
+        toggleCard(card);
+        if (!isOpen) window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+      }
     });
   });
 });
