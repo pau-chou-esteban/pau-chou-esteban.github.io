@@ -61,7 +61,7 @@ nav {
 }
 .nav-logo { font-family: var(--font-d); font-size: 20px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #fff; text-decoration: none; }
 .nav-links { display: flex; gap: 28px; list-style: none; }
-.nav-links a { font-size: 13px; font-weight: 400; letter-spacing: 0.6px; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.18s; }
+.nav-links a { font-size: 14px; font-weight: 500; letter-spacing: 0.6px; text-transform: uppercase; color: rgba(255,255,255,0.80); text-decoration: none; transition: color 0.18s; }
 .nav-links a:hover { color: #fff; }
 
 /* ─── HERO — Perlin canvas ────────────────── */
@@ -288,7 +288,7 @@ nav {
 
 /* ─── ABOUT ──────────────────────────────── */
 .about-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 60px; align-items: start; }
-.about-body p { font-size: 17px; font-weight: 300; color: var(--slate); line-height: 1.8; margin-bottom: 18px; }
+.about-body p { font-size: 17px; font-weight: 400; color: var(--slate); line-height: 1.8; margin-bottom: 18px; }
 .about-body a { color: var(--accent); text-decoration: none; font-weight: 500; border-bottom: 1px solid var(--accent-lt); transition: border-color 0.2s; }
 .about-body a:hover { border-color: var(--accent); }
 .lang-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
@@ -296,9 +296,22 @@ nav {
 .about-stats { display: flex; flex-direction: column; gap: 14px; }
 .stat-block { background: var(--navy); border-radius: var(--r-md); padding: 22px 24px; }
 .stat-block-num   { font-family: var(--font-d); font-size: 40px; font-weight: 700; color: #fff; line-height: 1; }
-.stat-block-label { font-size: 12px; font-weight: 300; letter-spacing: 0.5px; color: rgba(255,255,255,0.55); margin-top: 5px; text-transform: uppercase; }
-.resume-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 32px; padding: 12px 24px; background: var(--navy); color: #fff; border-radius: var(--r-sm); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; transition: background 0.18s, transform 0.15s; }
-.resume-link:hover { background: var(--accent); transform: translateY(-1px); }
+.stat-block-label { font-size: 13px; font-weight: 400; letter-spacing: 0.5px; color: rgba(255,255,255,0.80); margin-top: 5px; text-transform: uppercase; }
+.resume-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 32px; padding: 12px 24px; background: var(--navy); color: #fff !important; border-radius: var(--r-sm); text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; transition: background 0.18s, transform 0.15s; }
+.resume-link:hover { background: var(--accent); transform: translateY(-1px); color: #fff !important; }
+.resume-link:visited { color: #fff !important; }
+.resume-link::after {
+  content: '';
+  display: inline-block;
+  width: 12px; height: 12px;
+  background-color: currentColor;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E");
+  -webkit-mask-size: contain; mask-size: contain;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  opacity: 0.85;
+  flex-shrink: 0;
+}
 
 /* ─── EXPANDABLE CARDS (academics / entrepreneurship / service / fencing) ── */
 /* Flexbox so each card is fully independent — open cards never stretch their siblings */
@@ -343,6 +356,40 @@ nav {
   color: var(--navy); margin-bottom: 0; line-height: 1.15;
 }
 
+/* ── Title link — inactive when closed, active with icon when open ── */
+.card-head-title h3 a {
+  color: inherit;
+  text-decoration: none;
+  pointer-events: none;   /* not clickable when card is closed */
+}
+.exp-card.open .card-head-title h3 a {
+  pointer-events: auto;
+  color: var(--accent);
+  transition: color 0.18s;
+}
+.exp-card.open .card-head-title h3 a:hover {
+  color: var(--navy);
+}
+/* External link icon — appears only when open */
+.exp-card.open .card-head-title h3 a::after {
+  content: '';
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  margin-left: 7px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  background-color: currentColor;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  opacity: 0.7;
+}
+
 /* Toggle arrow */
 .card-toggle {
   padding: 20px 20px 0;
@@ -361,7 +408,7 @@ nav {
   padding: 8px 20px 20px 22px;
 }
 .card-head-body .card-intro {
-  font-size: 14px; font-weight: 300; color: var(--slate); line-height: 1.6;
+  font-size: 15px; font-weight: 400; color: var(--slate); line-height: 1.6;
   margin-bottom: 0;
 }
 
@@ -415,13 +462,13 @@ nav {
   display: block;
 }
 
-.card-body-inner p   { font-size: 14px; font-weight: 300; color: var(--slate); line-height: 1.65; margin: 12px 0; }
-.card-body-inner ul  { font-size: 13px; font-weight: 300; color: var(--slate); padding-left: 18px; line-height: 1.75; margin: 10px 0; }
-.card-body-inner h4  { font-family: var(--font-d); font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--navy); margin: 18px 0 6px; }
+.card-body-inner p   { font-size: 15px; font-weight: 400; color: var(--slate); line-height: 1.65; margin: 12px 0; }
+.card-body-inner ul  { font-size: 15px; font-weight: 400; color: var(--slate); padding-left: 18px; line-height: 1.75; margin: 10px 0; }
+.card-body-inner h4  { font-family: var(--font-d); font-size: 15px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--navy); margin: 18px 0 6px; }
 
 .doc-link {
   display: inline-flex; align-items: center; gap: 6px;
-  font-size: 13px; font-weight: 500; color: var(--accent);
+  font-size: 14px; font-weight: 500; color: var(--accent);
   text-decoration: none; border-bottom: 1px solid var(--accent-lt);
   transition: border-color 0.18s; margin: 6px 18px 6px 0;
 }
@@ -432,11 +479,11 @@ nav {
 
 /* ── Abstract block ── */
 .abstract-block {
-  font-style: italic; font-size: 13px; color: var(--steel);
+  font-style: italic; font-size: 14px; color: var(--steel);
   border-left: 3px solid var(--mist); padding: 10px 16px;
   margin: 14px 0; line-height: 1.7;
 }
-.citation { font-size: 12px; color: var(--fog); margin-top: 10px; }
+.citation { font-size: 13px; color: var(--fog); margin-top: 10px; }
 
 /* ─── MEDALS ─────────────────────────────── */
 .medal-bar { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 36px; }
@@ -444,27 +491,42 @@ nav {
 .medal-num  { font-family: var(--font-d); font-size: 56px; font-weight: 700; letter-spacing: -1px; line-height: 1; }
 .medal-num.g { color: #B07D2C; } .medal-num.s { color: #6E8CA3; } .medal-num.b { color: #8C6244; }
 .medal-cell-label  { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--fog); margin-top: 6px; }
-.medal-cell-detail { font-size: 12px; font-weight: 300; color: var(--fog); margin-top: 8px; line-height: 1.5; }
+.medal-cell-detail { font-size: 12px; font-weight: 400; color: var(--fog); margin-top: 8px; line-height: 1.5; }
 
 /* ─── CAMPS STRIP ───────────────────────── */
 .camps-strip { background: var(--navy); padding: 72px 48px; }
 .camps-inner { max-width: 1060px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
 .camps-strip .section-eyebrow { color: var(--fog); }
 .camps-strip .section-title   { color: #fff; margin-bottom: 20px; }
-.camps-strip p { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.7; }
+.camps-strip p { font-size: 15px; font-weight: 400; color: rgba(255,255,255,0.7); line-height: 1.7; }
 .camps-list { list-style: none; display: flex; flex-direction: column; gap: 18px; }
 .camps-list li { display: flex; gap: 14px; align-items: flex-start; }
 .camp-check { flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 10px; color: #fff; font-weight: 700; margin-top: 3px; }
-.camp-text { font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.7); line-height: 1.6; }
+.camp-text { font-size: 15px; font-weight: 400; color: rgba(255,255,255,0.8); line-height: 1.6; }
 .camp-text strong { color: rgba(255,255,255,0.9); font-weight: 500; }
 .camp-text a { color: rgba(255,255,255,0.8); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); transition: border-color 0.18s; }
 .camp-text a:hover { border-color: rgba(255,255,255,0.65); }
 
 /* ─── FOOTER ────────────────────────────── */
 footer { background: #080F18; padding: 36px 48px; text-align: center; }
-footer p { font-size: 13px; color: rgba(255,255,255,0.3); letter-spacing: 0.3px; }
-footer a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.18s; }
+footer p { font-size: 14px; color: rgba(255,255,255,0.55); letter-spacing: 0.3px; }
+footer a { color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.18s; }
 footer a:hover { color: #fff; }
+footer a:visited { color: rgba(255,255,255,0.75); }
+.footer-ext-link::after {
+  content: '';
+  display: inline-block;
+  width: 11px; height: 11px;
+  margin-left: 4px;
+  vertical-align: middle;
+  position: relative; top: -1px;
+  background-color: currentColor;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E");
+  -webkit-mask-size: contain; mask-size: contain;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  opacity: 0.8;
+}
 
 /* ─── HAMBURGER BUTTON (hidden on desktop) ─── */
 .nav-hamburger {
@@ -551,7 +613,7 @@ footer a:hover { color: #fff; }
 
   /* About */
   .about-grid { grid-template-columns: 1fr; gap: 32px; }
-  .about-body p { font-size: 15px; }
+  .about-body p { font-size: 16px; }
   .about-stats { flex-direction: row; flex-wrap: wrap; }
   .stat-block { flex: 1 1 140px; }
   .stat-block-num { font-size: 30px; }
@@ -561,13 +623,14 @@ footer a:hover { color: #fff; }
   .exp-card { border-radius: var(--r-md); }
   .card-head-title h3 { font-size: 18px; }
   .card-head-body { padding: 6px 16px 16px 18px; }
+  .card-head-body .card-intro { font-size: 14px; }
   .card-toggle { padding: 18px 14px 0; font-size: 17px; }
 
   .card-body-inner { padding: 0 16px 20px; }
   .card-expand-photo { height: 200px; }
-  .card-body-inner h4 { font-size: 13px; }
-  .card-body-inner ul { font-size: 12px; }
-  .card-body-inner p  { font-size: 13px; }
+  .card-body-inner h4 { font-size: 15px; }
+  .card-body-inner ul { font-size: 15px; }
+  .card-body-inner p  { font-size: 15px; }
 
   /* Cards grid — single column on small screens */
   .cards-grid .exp-card { flex: 1 1 100%; max-width: 100%; }
@@ -658,7 +721,7 @@ footer a:hover { color: #fff; }
           <span class="lang-tag">Spanish</span>
           <span class="lang-tag">Mandarin</span>
         </div>
-        <a class="resume-link" href="assets/Pau_Chou-Esteban-Resume.pdf" target="_blank">View Résumé ↗</a>
+        <a class="resume-link" href="assets/Pau_Chou-Esteban-Resume.pdf" target="_blank">View Résumé</a>
       </div>
       <div class="about-stats reveal reveal-delay-2">
         <div class="stat-block"><div class="stat-block-num">1500</div><div class="stat-block-label">SAT Score · Math 780 · English 720</div></div>
@@ -684,7 +747,7 @@ footer a:hover { color: #fff; }
           <div class="card-thumb"><img src="assets/Bronx-Science-Logo.jpeg" alt="Bronx Science" /></div>
           <div class="card-head-title">
             <span class="card-badge var">Class of 2027</span>
-            <h3><a href="https://www.bxscience.edu" target="_blank" onclick="event.stopPropagation()">Bronx High School of Science</a></h3>
+            <h3><a href="https://www.bxscience.edu" target="_blank">Bronx High School of Science</a></h3>
           </div>
           <div class="card-toggle">▾</div>
         </div>
@@ -720,7 +783,7 @@ footer a:hover { color: #fff; }
           <div class="card-thumb"><img src="assets/Euro-Challenge-Logo.png" alt="Euro Challenge" /></div>
           <div class="card-head-title">
             <span class="card-badge on">National Semifinalist</span>
-            <h3><a href="https://www.euro-challenge.org" target="_blank" onclick="event.stopPropagation()">Euro Challenge 2025</a></h3>
+            <h3><a href="https://www.euro-challenge.org" target="_blank">Euro Challenge 2025</a></h3>
           </div>
           <div class="card-toggle">▾</div>
         </div>
@@ -755,7 +818,7 @@ footer a:hover { color: #fff; }
           <div class="card-thumb"><img src="assets/High-School-Fed-Challenge-Logo.jpeg" alt="Fed Challenge" /></div>
           <div class="card-head-title">
             <span class="card-badge var">2026</span>
-            <h3><a href="https://www.newyorkfed.org/outreach-and-education/high-school/high-school-fed-challenge" target="_blank" onclick="event.stopPropagation()">High School Fed Challenge 2026</a></h3>
+            <h3><a href="https://www.newyorkfed.org/outreach-and-education/high-school/high-school-fed-challenge" target="_blank">High School Fed Challenge 2026</a></h3>
           </div>
           <div class="card-toggle">▾</div>
         </div>
@@ -904,7 +967,7 @@ footer a:hover { color: #fff; }
             <div class="card-thumb"><img src="assets/Golden-Eagle-Logo.jpeg" alt="Golden Eagle" /></div>
             <div class="card-head-title">
               <span class="card-badge on">Ongoing</span>
-              <h3><a href="https://goldeneagleseniorcare.com/" target="_blank" onclick="event.stopPropagation()">Golden Eagle Senior Care</a></h3>
+              <h3><a href="https://goldeneagleseniorcare.com/" target="_blank">Golden Eagle Senior Care</a></h3>
             </div>
             <div class="card-toggle">▾</div>
           </div>
@@ -932,7 +995,7 @@ footer a:hover { color: #fff; }
             <div class="card-thumb"><img src="assets/Bronx-Science-Girls-Fencing-Logo.jpg" alt="Girls Fencing" /></div>
             <div class="card-head-title">
               <span class="card-badge var">2025</span>
-              <h3><a href="https://www.instagram.com/bxsci.fencing/" target="_blank" onclick="event.stopPropagation()">Girls Fencing Team Manager</a></h3>
+              <h3><a href="https://www.instagram.com/bxsci.fencing/" target="_blank">Girls Fencing Team Manager</a></h3>
             </div>
             <div class="card-toggle">▾</div>
           </div>
@@ -972,7 +1035,7 @@ footer a:hover { color: #fff; }
           <div class="card-thumb"><img src="assets/Bronx-Science-Fencing-Logo.jpg" alt="Varsity Fencing" /></div>
           <div class="card-head-title">
             <span class="card-badge var">Varsity</span>
-            <h3><a href="https://www.instagram.com/bxsci.fencing/" target="_blank" onclick="event.stopPropagation()">Bronx Science — Épée &amp; Foil</a></h3>
+            <h3><a href="https://www.instagram.com/bxsci.fencing/" target="_blank">Bronx Science — Épée &amp; Foil</a></h3>
           </div>
           <div class="card-toggle">▾</div>
         </div>
@@ -1003,7 +1066,7 @@ footer a:hover { color: #fff; }
           <div class="card-thumb"><img src="assets/Northshore-Fencers-Club-Logo.jpg" alt="North Shore FC" /></div>
           <div class="card-head-title">
             <span class="card-badge">Épée · B25</span>
-            <h3><a href="https://northshorefc.com/" target="_blank" onclick="event.stopPropagation()">North Shore Fencers Club</a></h3>
+            <h3><a href="https://northshorefc.com/" target="_blank">North Shore Fencers Club</a></h3>
           </div>
           <div class="card-toggle">▾</div>
         </div>
@@ -1052,7 +1115,7 @@ footer a:hover { color: #fff; }
           <div class="card-thumb"><img src="assets/East-Coast-Fencing-Club-Logo.jpeg" alt="East Coast FC" /></div>
           <div class="card-head-title">
             <span class="card-badge">Foil · C26</span>
-            <h3><a href="https://www.eastcoastfencingclub.com" target="_blank" onclick="event.stopPropagation()">East Coast Fencing Club</a></h3>
+            <h3><a href="https://www.eastcoastfencingclub.com" target="_blank">East Coast Fencing Club</a></h3>
           </div>
           <div class="card-toggle">▾</div>
         </div>
@@ -1158,14 +1221,14 @@ footer a:hover { color: #fff; }
 <footer>
   <p>
     Pau Chou-Esteban &nbsp;·&nbsp; Bronx High School of Science &nbsp;·&nbsp; Class of 2027 &nbsp;·&nbsp;
-    <a href="assets/Pau_Chou-Esteban-Resume.pdf" target="_blank">Résumé ↗</a>
+    <a class="footer-ext-link" href="assets/Pau_Chou-Esteban-Resume.pdf" target="_blank">Résumé</a>
     &nbsp;·&nbsp;
-    <a href="https://fencingtracker.com/p/100507831/Pau-Chou-Esteban" target="_blank">Fencing Tracker ↗</a>
+    <a class="footer-ext-link" href="https://fencingtracker.com/p/100507831/Pau-Chou-Esteban" target="_blank">Fencing Tracker</a>
     &nbsp;·&nbsp;
-    <a href="https://www.instagram.com/bxsci.fencing/" target="_blank">Instagram ↗</a>
+    <a class="footer-ext-link" href="https://www.instagram.com/bxsci.fencing/" target="_blank">Instagram</a>
   </p>
-  <p style="margin-top: 10px; font-size: 11px; opacity: 0.5;">
-    Site designed by Sangho Kim &nbsp;·&nbsp; Crafted with <a href="https://claude.ai" target="_blank" style="color:rgba(255,255,255,0.55);">Claude</a> by Anthropic
+  <p style="margin-top: 10px; font-size: 13px;">
+    Site designed by Sangho Kim &nbsp;·&nbsp; Crafted with <a href="https://claude.ai" target="_blank" style="color:rgba(255,255,255,0.75);">Claude</a> by Anthropic
   </p>
 </footer>
 
