@@ -24,6 +24,7 @@
   --gold:      #B07D2C;
   --gold-lt:   #F5EDD8;
   --sec-a:     #EDF2F7;   /* blue-tinted — odd sections */
+  --sec-a-lt:  #F4F8FB;   /* lighter blue-tint — for accent blocks sitting on white sections */
   --sec-b:     #FDFEFF;   /* near-white with faintest blue tint — even sections */
   --r-sm: 6px; --r-md: 12px; --r-lg: 20px;
   --font-d: 'Barlow Condensed', 'Arial Narrow', sans-serif;
@@ -342,9 +343,8 @@ nav {
   align-items: start;
 }
 
-/* No more card-head-top / card-thumb needed — remove their effects */
+/* No more card-head-top needed — remove its effects */
 .card-head-top { display: contents; } /* children flow into card-head grid */
-.card-thumb { display: none; }        /* logos removed from closed state */
 
 /* Title + badge */
 .card-head-title { padding: 20px 0 0 18px; }
@@ -473,6 +473,118 @@ nav {
   transition: border-color 0.18s; margin: 6px 18px 6px 0;
 }
 .doc-link:hover { border-color: var(--accent); }
+.inline-link { color: var(--accent); font-weight: 500; text-decoration: none; }
+.inline-link:hover { text-decoration: underline; }
+
+/* Force 2-column grid in academics section (kept for any nested grids) */
+.sec-b .cards-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.sec-b .cards-grid .exp-card { max-width: 100%; flex: none; }
+
+/* Alternating 4-part academics layout */
+.acad-part {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-bottom: 52px;
+  align-items: start;
+}
+.acad-cards-stack { display: flex; flex-direction: column; gap: 20px; }
+.acad-cards-stack .exp-card { max-width: 100%; flex: none; }
+.acad-narrative {
+  padding: 12px 4px 8px;
+  display: flex;
+  flex-direction: column;
+}
+.acad-side {
+  display: flex;
+  flex-direction: column;
+}
+.acad-num {
+  font-family: var(--font-d);
+  font-size: 88px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -4px;
+  color: var(--ink);
+  opacity: 0.07;
+  margin: 0 0 8px;
+  user-select: none;
+  pointer-events: none;
+}
+.acad-part-title {
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 12px;
+  line-height: 1.25;
+  font-family: var(--font-d);
+}
+.acad-text {
+  font-size: 15px;
+  color: var(--slate);
+  line-height: 1.75;
+  margin: 0 0 16px;
+}
+.acad-narrative .pills { margin: 0 0 20px; }
+
+
+/* Force 2-column grid in fencing section */
+#fencing .cards-grid { display: grid; grid-template-columns: 1fr 1fr; }
+#fencing .cards-grid .exp-card { max-width: 100%; flex: none; }
+/* ── Credential grid (compact 2-col, no expand) ── */
+.credential-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 8px 0 4px;
+}
+.cred-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 20px 22px;
+  box-shadow: 0 2px 12px rgba(15,28,46,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: box-shadow 0.18s, transform 0.18s;
+}
+.cred-card:hover { box-shadow: 0 8px 28px rgba(15,28,46,0.10); transform: translateY(-2px); }
+.cred-card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.cred-thumb {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: var(--bg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cred-thumb img { width: 100%; height: 100%; object-fit: contain; }
+.cred-title-area { display: flex; flex-direction: column; gap: 6px; }
+.cred-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+  margin: 0;
+}
+.cred-title a { color: inherit; text-decoration: none; }
+.cred-title a:hover { color: var(--accent); }
+.cred-intro {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+@media (max-width: 600px) { .credential-grid { grid-template-columns: 1fr; } }
+
 
 .yt-embed { margin-top: 14px; border-radius: var(--r-md); overflow: hidden; aspect-ratio: 16/9; width: 100%; max-width: 520px; }
 .yt-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
@@ -487,7 +599,7 @@ nav {
 
 /* ─── MEDALS ─────────────────────────────── */
 .medal-bar { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 36px; }
-.medal-cell { background: var(--white); border: 1px solid var(--mist); border-radius: var(--r-md); padding: 28px 24px; text-align: center; }
+.medal-cell { background: var(--sec-a-lt); border: 1px solid var(--mist); border-radius: var(--r-md); padding: 28px 24px; text-align: center; }
 .medal-num  { font-family: var(--font-d); font-size: 56px; font-weight: 700; letter-spacing: -1px; line-height: 1; }
 .medal-num.g { color: #B07D2C; } .medal-num.s { color: #6E8CA3; } .medal-num.b { color: #8C6244; }
 .medal-cell-label  { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--fog); margin-top: 6px; }
@@ -634,6 +746,10 @@ footer a:visited { color: rgba(255,255,255,0.75); }
 
   /* Cards grid — single column on small screens */
   .cards-grid .exp-card { flex: 1 1 100%; max-width: 100%; }
+  .sec-b .cards-grid { grid-template-columns: 1fr; }
+  .acad-part { grid-template-columns: 1fr; margin-bottom: 36px; }
+  .acad-side { order: -1; }
+  #fencing .cards-grid { grid-template-columns: 1fr; }
 
   /* Medal bar */
   .medal-bar { grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
@@ -661,6 +777,7 @@ footer a:visited { color: rgba(255,255,255,0.75); }
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#academics">Academics</a></li>
+    <li><a href="#research">Research</a></li>
     <li><a href="#entrepreneurship">Entrepreneurship</a></li>
     <li><a href="#service">Service</a></li>
     <li><a href="#fencing">Fencing</a></li>
@@ -674,6 +791,7 @@ footer a:visited { color: rgba(255,255,255,0.75); }
 <div class="mobile-nav-drawer" id="mobileNav">
   <a href="#about"           onclick="closeMenu()">About</a>
   <a href="#academics"       onclick="closeMenu()">Academics</a>
+  <a href="#research"        onclick="closeMenu()">Research</a>
   <a href="#entrepreneurship" onclick="closeMenu()">Entrepreneurship</a>
   <a href="#service"         onclick="closeMenu()">Service</a>
   <a href="#fencing"         onclick="closeMenu()">Fencing</a>
@@ -713,7 +831,7 @@ footer a:visited { color: rgba(255,255,255,0.75); }
     <h2 class="section-title reveal">About Me</h2>
     <div class="about-grid">
       <div class="about-body reveal reveal-delay-1">
-        <p>I'm a junior at <a href="https://www.bxscience.edu" target="_blank">The Bronx High School of Science</a> — one of New York City's most selective specialized high schools — where I push myself academically and competitively every day.</p>
+        <p>I'm a junior at <a href="https://www.bxscience.edu" target="_blank">The Bronx High School of Science</a>, one of New York City's most selective specialized high schools, where I push myself academically and competitively every day.</p>
         <p>Born in Tokyo in 2009 to a Taiwanese mother and a Spanish father, I grew up between three cultures and speak English, Spanish, and Mandarin fluently. I've called New York home since I was five.</p>
         <p>I plan to study Business, Finance, and Economics in college. My research experience and time on the fencing strip have both taught me the same thing: that disciplined thinking under pressure is the foundation of everything.</p>
         <div class="lang-row">
@@ -738,22 +856,32 @@ footer a:visited { color: rgba(255,255,255,0.75); }
 <div class="sec-b" id="academics">
   <div class="sec-inner">
     <p class="section-eyebrow reveal">Academics</p>
-    <h2 class="section-title reveal">Research &amp; Achievement</h2>
+    <h2 class="section-title reveal">Coursework &amp; Competition</h2>
 
+    <!-- ── PART 1: The Foundation ── -->
+    <div class="acad-part">
+      <div class="acad-side">
+        <div class="acad-num">01</div>
+        <div class="acad-narrative reveal">
+          <h3 class="acad-part-title">The Foundation</h3>
+          <p class="acad-text">I got into Bronx Science by exam. The school put me in rooms with people who took everything seriously, and something about that stuck. The summer before senior year I enrolled in Calculus&nbsp;I at Queens College, the regular undergraduate section, not a high school track, and finished with an A+. It felt important to find out.</p>
+          <div class="pills"><span class="pill">NYC Specialized HS</span><span class="pill hi">AP Micro · Physics · Bio — 5</span><span class="pill">SAT 1500</span></div>
+        </div>
+      </div>
+    <div class="acad-cards-stack">
     <!-- 01 Bronx Science -->
     <div class="exp-card reveal reveal-delay-1">
       <div class="card-head">
         <div class="card-head-top">
-          <div class="card-thumb"><img src="assets/Bronx-Science-Logo.jpeg" alt="Bronx Science" /></div>
           <div class="card-head-title">
             <span class="card-badge var">Class of 2027</span>
             <h3><a href="https://www.bxscience.edu" target="_blank">Bronx High School of Science</a></h3>
           </div>
-          <div class="card-toggle">▾</div>
+          <div class="card-toggle">&#9662;</div>
         </div>
         <div class="card-head-body">
-          <p class="card-intro">AP Scholar with Distinction · AP Microeconomics 5 · AP Physics 1 5 · AP Biology 5 · SAT 1500</p>
-          <div class="pills"><span class="pill gold-hi">AP Scholar with Distinction</span><span class="pill hi">AP Microeconomics — 5</span><span class="pill hi">AP Physics 1 — 5</span><span class="pill hi">AP Biology — 5</span><span class="pill">SAT 1500</span></div>
+          <p class="card-intro">A NYC specialized high school with competitive entrance exam. Courses in science, economics, and languages.</p>
+          <div class="pills"><span class="pill hi">AP Micro — 5</span><span class="pill hi">AP Physics 1 — 5</span><span class="pill hi">AP Bio — 5</span><span class="pill">SAT 1500</span></div>
         </div>
       </div>
       <div class="card-body">
@@ -762,41 +890,69 @@ footer a:visited { color: rgba(255,255,255,0.75); }
           <h4>Selected Courses</h4>
           <ul>
             <li>AP Microeconomics</li><li>AP Biology</li><li>AP Physics 1</li>
-            <li>Honors Pre-Calculus</li><li>Government and Economics</li><li>French I–III</li>
+            <li>Honors Pre-Calculus</li><li>Government and Economics</li><li>French I&ndash;III</li>
           </ul>
           <h4>AP Exam Results</h4>
           <ul>
             <li>AP Microeconomics — <strong>5</strong></li>
             <li>AP Physics 1 — <strong>5</strong></li>
             <li>AP Biology — <strong>5</strong></li>
-            <li>AP Chinese Language and Culture — <strong>4</strong></li>
-            <li>AP Spanish Language and Culture — <strong>3</strong></li>
-          </ul>
-          <h4>Awards</h4>
-          <ul>
-            <li><strong>AP Scholar with Distinction</strong> (2026) — College Board award for averaging 3.5+ across all AP exams with 3+ on five or more exams. Average: 4.4 across 5 exams.</li>
-            <li><strong>AP Scholar</strong> (2025) — for scoring 3+ on three or more AP exams.</li>
-            <li><strong>College Board National Recognition Program</strong> — School Recognition Award (2026), for outstanding academic achievement.</li>
+            <li>AP Chinese Language and Culture — <strong>4</strong> <em>(taken without formal coursework)</em></li>
+            <li>AP Spanish Language and Culture — <strong>3</strong> <em>(taken without formal coursework)</em></li>
           </ul>
           <h4>SAT</h4>
-          <p>1500 total — Math 780, English 720</p>
+          <p>1500 total &mdash; Math 780, Reading &amp; Writing 720</p>
         </div>
       </div>
     </div>
 
-    <!-- 02 Euro Challenge -->
+    <!-- 02 Calculus I — Queens College -->
     <div class="exp-card reveal reveal-delay-2">
       <div class="card-head">
         <div class="card-head-top">
-          <div class="card-thumb"><img src="assets/Euro-Challenge-Logo.png" alt="Euro Challenge" /></div>
+          <div class="card-head-title">
+            <span class="card-badge on">A+ &middot; Summer 2026</span>
+            <h3>Calculus I &mdash; Undergraduate Enrollment</h3>
+          </div>
+          <div class="card-toggle">&#9662;</div>
+        </div>
+        <div class="card-head-body">
+          <p class="card-intro">A+ in the regular undergraduate Calculus I section at Queens College, CUNY. Summer before senior year.</p>
+          <div class="pills"><span class="pill gold-hi">A+</span><span class="pill hi">University Section</span><span class="pill">Summer 2026</span></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <img class="card-expand-photo" src="assets/Queens-College-Photo.jpg" alt="Queens College CUNY" />
+          <h4>About This Course</h4>
+          <ul>
+            <li>Enrolled in the standard Calculus I section at Queens College, City University of New York &mdash; not a dual-enrollment or high-school-track program</li>
+            <li>Classmates were degree-seeking undergraduates; graded on the same curve and held to the same standard</li>
+            <li>Earned an A+ &mdash; the highest possible grade</li>
+            <li>Demonstrates the quantitative readiness expected by top business programs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    </div><!-- end acad-cards-stack 1 -->
+    </div><!-- end acad-part 1 -->
+
+    <!-- ── PART 2: On the National Stage ── -->
+    <div class="acad-part">
+    <div class="acad-cards-stack">
+    <!-- 03 Euro Challenge -->
+    <div class="exp-card reveal reveal-delay-1">
+      <div class="card-head">
+        <div class="card-head-top">
           <div class="card-head-title">
             <span class="card-badge on">National Semifinalist</span>
             <h3><a href="https://www.euro-challenge.org" target="_blank">Euro Challenge 2025</a></h3>
           </div>
-          <div class="card-toggle">▾</div>
+          <div class="card-toggle">&#9662;</div>
         </div>
         <div class="card-head-body">
-          <p class="card-intro">Spanish economy research — Growth, Competitiveness &amp; Prosperity. Advanced to National Semifinals.</p>
+          <p class="card-intro">Spanish economy research &mdash; Growth, Competitiveness &amp; Prosperity. Advanced to National Semifinals.</p>
           <div class="pills"><span class="pill hi">Semifinalist</span><span class="pill">Spanish Economy</span><span class="pill">Team Competition</span></div>
         </div>
       </div>
@@ -811,7 +967,7 @@ footer a:visited { color: rgba(255,255,255,0.75); }
             <li>Deepened my understanding of Spain's structural economic challenges and long-term growth outlook</li>
           </ul>
           <h4>Resources</h4>
-          <a class="doc-link" href="assets/Euro-Challenge-2025-Bronx-Science-Slides.pdf" target="_blank">📄 View Presentation Slides (PDF) ↗</a>
+          <a class="doc-link" href="assets/Euro-Challenge-2025-Bronx-Science-Slides.pdf" target="_blank">&#128196; View Presentation Slides (PDF) &#8599;</a>
           <div class="yt-embed">
             <iframe src="https://www.youtube.com/embed/f3VhpPIK0xI?si=o-0WFb3d91wBC7VW" title="Euro Challenge Presentation" allowfullscreen></iframe>
           </div>
@@ -819,19 +975,18 @@ footer a:visited { color: rgba(255,255,255,0.75); }
       </div>
     </div>
 
-    <!-- 03 Fed Challenge -->
-    <div class="exp-card reveal reveal-delay-3">
+    <!-- 04 Fed Challenge -->
+    <div class="exp-card reveal reveal-delay-2">
       <div class="card-head">
         <div class="card-head-top">
-          <div class="card-thumb"><img src="assets/High-School-Fed-Challenge-Logo.jpeg" alt="Fed Challenge" /></div>
           <div class="card-head-title">
             <span class="card-badge var">2026</span>
             <h3><a href="https://www.newyorkfed.org/outreach-and-education/high-school/high-school-fed-challenge" target="_blank">High School Fed Challenge 2026</a></h3>
           </div>
-          <div class="card-toggle">▾</div>
+          <div class="card-toggle">&#9662;</div>
         </div>
         <div class="card-head-body">
-          <p class="card-intro">The Economics of Music — studying the rise in concert ticket prices for the NY Fed Competition.</p>
+          <p class="card-intro">The Economics of Music &mdash; studying the rise in concert ticket prices for the NY Fed Competition.</p>
           <div class="pills"><span class="pill hi">Federal Reserve</span><span class="pill">Market Economics</span><span class="pill">Entertainment</span></div>
         </div>
       </div>
@@ -846,21 +1001,86 @@ footer a:visited { color: rgba(255,255,255,0.75); }
             <li>Built a working framework for understanding pricing power and demand inelasticity in live entertainment</li>
           </ul>
           <h4>Resources</h4>
-          <a class="doc-link" href="assets/High-School-Fed-Challenge-2025-2026-Bronx-Science-Submission.pdf" target="_blank">📄 View Submission Paper (PDF) ↗</a>
+          <a class="doc-link" href="assets/High-School-Fed-Challenge-2025-2026-Bronx-Science-Submission.pdf" target="_blank">&#128196; View Submission Paper (PDF) &#8599;</a>
         </div>
       </div>
     </div>
 
-    <!-- 04 Research Paper -->
-    <div class="exp-card reveal reveal-delay-4">
+    </div><!-- end acad-cards-stack 2 -->
+      <div class="acad-side">
+        <div class="acad-num">02</div>
+        <div class="acad-narrative reveal">
+          <h3 class="acad-part-title">On the National Stage</h3>
+          <p class="acad-text">Economics started as a subject and became a way of looking at things. As a sophomore I joined a team researching Spain&rsquo;s economy for Euro Challenge and we made it to the National Semifinals in Manhattan. A year later my team was back at it for the NY Federal Reserve Competition, trying to explain why concert ticket prices had gotten so out of hand. We built an actual model. That felt different.</p>
+          <div class="pills"><span class="pill hi">Euro Challenge Semifinalist</span><span class="pill">NY Federal Reserve</span><span class="pill">Economics Research</span></div>
+        </div>
+      </div>
+    </div><!-- end acad-part 2 -->
+
+  </div>
+</div>
+
+
+<!-- ── RESEARCH (sec-a) ── -->
+<div class="sec-a" id="research">
+  <div class="sec-inner">
+    <p class="section-eyebrow reveal">Research</p>
+    <h2 class="section-title reveal">Research &amp; Recognition</h2>
+
+    <!-- ── PART 3: From Competition to Research ── -->
+    <div class="acad-part">
+      <div class="acad-side">
+        <div class="acad-num">03</div>
+        <div class="acad-narrative reveal">
+          <h3 class="acad-part-title">From Competition to Research</h3>
+          <p class="acad-text">The Fed Challenge work didn&rsquo;t feel finished when the competition ended. My classmate Louis Gui and I kept going: we designed an experiment, ran it, and got a result that didn&rsquo;t match what the textbooks predicted. We wrote it up as a paper. That same summer, MRU selected me for their High School Fellowship and I spent six weeks making economics videos on emigration, working with a professor from USC Marshall. By that point I&rsquo;d stopped thinking of economics as something I studied.</p>
+          <div class="pills"><span class="pill hi">Working Paper</span><span class="pill gold-hi">MRU Fellow 2026</span><span class="pill">Experimental Economics</span></div>
+        </div>
+      </div>
+    <div class="acad-cards-stack">
+    <!-- 05 MRU Fellowship -->
+    <div class="exp-card reveal reveal-delay-1">
       <div class="card-head">
         <div class="card-head-top">
-          <div class="card-thumb"><img src="assets/research-logo.jpg" alt="Research" /></div>
+          <div class="card-head-title">
+            <span class="card-badge on">2026 Fellow</span>
+            <h3><a href="https://pages.mru.org/high-school-fellowship/" target="_blank">MRU High School Fellowship</a></h3>
+          </div>
+          <div class="card-toggle">&#9662;</div>
+        </div>
+        <div class="card-head-body">
+          <p class="card-intro">Competitive 6-week summer fellowship with MRU. Economics videos on emigration, mentored by Matt Hill of USC Marshall.</p>
+          <div class="pills"><span class="pill gold-hi">Competitive Fellowship</span><span class="pill hi">Economics</span><span class="pill">Tyler Cowen</span><span class="pill">Matt Hill &middot; USC Marshall</span><span class="pill">Summer 2026</span></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <img class="card-expand-photo" src="assets/MRU-Fellowship-Photo.jpg" alt="MRU Fellowship" style="max-height: 260px;" />
+          <h4>Fellowship Overview</h4>
+          <ul>
+            <li>Selected for a competitive 6-week summer 2026 fellowship with Marginal Revolution University (MRU), one of the world&rsquo;s leading free economics education platforms</li>
+            <li>MRU was co-founded by Tyler Cowen and Alex Tabarrok of George Mason University</li>
+            <li>Mentored by <a href="https://www.marshall.usc.edu/personnel/matthew-hill" target="_blank" class="inline-link"><strong>Matt Hill</strong></a>, professor at USC Marshall School of Business</li>
+            <li>Produced three original short-form economics videos on the topic of <strong>emigration and its macroeconomic effects</strong></li>
+            <li>One of a small cohort of high school students selected nationwide</li>
+          </ul>
+          <h4>Videos Produced</h4>
+          <a class="doc-link" href="https://youtube.com/shorts/eP2H5GoYEYI" target="_blank">&#9654; Emigration Impact: Brain Drain &#8599;</a>
+          <a class="doc-link" href="https://youtube.com/shorts/Z8HzWOgQZ9E" target="_blank">&#9654; Emigration Impact: Remittances &amp; Return Migration &#8599;</a>
+          <a class="doc-link" href="https://youtube.com/shorts/Nn9w380mXE8" target="_blank">&#9654; Emigration Impact: Brain Gain &#8599;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 06 Independent Research -->
+    <div class="exp-card reveal reveal-delay-2">
+      <div class="card-head">
+        <div class="card-head-top">
           <div class="card-head-title">
             <span class="card-badge on">Co-authored 2026</span>
-            <h3>Independent Research — Concert Ticket Markets</h3>
+            <h3>Independent Research &mdash; Concert Ticket Markets</h3>
           </div>
-          <div class="card-toggle">▾</div>
+          <div class="card-toggle">&#9662;</div>
         </div>
         <div class="card-head-body">
           <p class="card-intro">Experimental economics paper replicating a posted-offer market. Co-authored with Louis Gui. VeconLab, 36 participants.</p>
@@ -874,7 +1094,7 @@ footer a:visited { color: rgba(255,255,255,0.75); }
           <ul>
             <li>Co-designed and ran an economics experiment with Louis Gui, stemming from our Fed Challenge research</li>
             <li>Replicated a posted-offer market using VeconLab to simulate concert ticket resale dynamics</li>
-            <li>Found that traded prices fell below equilibrium — a result that contradicts prior literature</li>
+            <li>Found that traded prices fell below equilibrium &mdash; a result that contradicts prior literature</li>
             <li>Traced the discrepancy to violations of three precepts of Smith's Induced Value Theory</li>
             <li>Co-authored a full manuscript documenting our experimental design, results, and analysis</li>
           </ul>
@@ -884,26 +1104,105 @@ footer a:visited { color: rgba(255,255,255,0.75); }
           </div>
           <p class="citation">Chou-Esteban, A., &amp; Gui, L. (2026). <em>Pricing Without Negotiation: Experimental Evidence from a Simulated Concert Ticket Market</em> [Unpublished manuscript]. The Bronx High School of Science.</p>
           <h4>Full Paper</h4>
-          <a class="doc-link" href="assets/Chou-Esteban_Gui-2026-Pricing-Without-Negotiation-Experimental-Evidence-from-a-Simulated-Concert-Ticket-Market.pdf" target="_blank">📄 View Full Manuscript (PDF) ↗</a>
+          <a class="doc-link" href="assets/Chou-Esteban_Gui-2026-Pricing-Without-Negotiation-Experimental-Evidence-from-a-Simulated-Concert-Ticket-Market.pdf" target="_blank">&#128196; View Full Manuscript (PDF) &#8599;</a>
         </div>
       </div>
     </div>
 
+    </div><!-- end acad-cards-stack 3 -->
+    </div><!-- end acad-part 3 -->
+
+    <!-- ── PART 4: Credentials & Recognition ── -->
+    <div class="acad-part">
+    <div class="acad-cards-stack">
+    <!-- 07 Bloomberg Certifications -->
+    <div class="exp-card reveal reveal-delay-1">
+      <div class="card-head">
+        <div class="card-head-top">
+          <div class="card-head-title">
+            <span class="card-badge on">3 Certificates</span>
+            <h3><a href="https://www.bloomberg.com/professional/product/bloomberg-market-concepts/" target="_blank">Bloomberg Professional Certifications</a></h3>
+          </div>
+          <div class="card-toggle">&#9662;</div>
+        </div>
+        <div class="card-head-body">
+          <p class="card-intro">Three Bloomberg certifications &mdash; BMC, BFF, and BQL &mdash; covering markets, corporate finance, and spreadsheet analysis.</p>
+          <div class="pills"><span class="pill hi">BMC</span><span class="pill hi">BFF</span><span class="pill hi">BQL</span><span class="pill">Bloomberg Terminal</span></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <img class="card-expand-photo" src="assets/Bloombert-Terminal.jpg" alt="Bloomberg Terminal" style="background: var(--navy);" />
+          <h4>Certificates Earned</h4>
+          <ul>
+            <li><strong>Bloomberg Market Concepts (BMC)</strong> &mdash; covers economic indicators, currencies, fixed income, and equities. <a href="assets/Chou-Esteban_Pau-BMC-Certificate.pdf" target="_blank" class="inline-link">&#128196; Certificate &#8599;</a></li>
+            <li><strong>Bloomberg Finance Fundamentals (BFF)</strong> &mdash; covers financial statement analysis, valuation, and capital structure. <a href="assets/Chou-Esteban_Pau-BFF-Certificate.pdf" target="_blank" class="inline-link">&#128196; Certificate &#8599;</a></li>
+            <li><strong>Bloomberg Spreadsheet Analysis (BQL)</strong> &mdash; covers Bloomberg Query Language for macro, equity, and fixed income analysis in Excel. <a href="assets/Chou-Esteban_Pau-BQL-Certificate.pdf" target="_blank" class="inline-link">&#128196; Certificate &#8599;</a></li>
+          </ul>
+          <p>Bloomberg certifications are used by finance professionals and sought after by business school applicants. Each requires self-study and a proctored assessment.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 08 College Board Awards -->
+    <div class="exp-card reveal reveal-delay-2">
+      <div class="card-head">
+        <div class="card-head-top">
+          <div class="card-head-title">
+            <span class="card-badge gold-hi">3 Awards</span>
+            <h3><a href="https://collegeboard.org" target="_blank">College Board Recognition</a></h3>
+          </div>
+          <div class="card-toggle">&#9662;</div>
+        </div>
+        <div class="card-head-body">
+          <p class="card-intro">AP Scholar with Distinction (2026) &middot; AP Scholar (2025) &middot; National Recognition Program School Award (2026).</p>
+          <div class="pills"><span class="pill gold-hi">AP Scholar with Distinction</span><span class="pill hi">National Recognition Program</span></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <h4>Awards</h4>
+          <ul>
+            <li><strong>AP Scholar with Distinction</strong> (2026) &mdash; College Board award for averaging 3.5+ across all AP exams with 3+ on five or more exams. Average: 4.4 across 5 exams. <a href="assets/Chou-Esteban_Pau-2026-AP_Scholar_with_Distinction_Award.pdf" target="_blank" class="inline-link">&#128196; Certificate &#8599;</a></li>
+            <li><strong>AP Scholar</strong> (2025) &mdash; for scoring 3+ on three or more AP exams. <a href="assets/Chou-Esteban_Pau-2025-AP_Scholar_Award.pdf" target="_blank" class="inline-link">&#128196; Certificate &#8599;</a></li>
+            <li><strong>College Board National Recognition Program</strong> &mdash; School Recognition Award (2026), for outstanding academic achievement. <a href="assets/Chou-Esteban_Pau-National_Recognition_Program_Certificate.pdf" target="_blank" class="inline-link">&#128196; Certificate &#8599;</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    </div><!-- end acad-cards-stack 4 -->
+      <div class="acad-side">
+        <div class="acad-num">04</div>
+        <div class="acad-narrative reveal">
+          <h3 class="acad-part-title">Credentials &amp; Recognition</h3>
+          <p class="acad-text">I also worked through Bloomberg&rsquo;s professional certification tracks in markets, corporate finance, and spreadsheet analysis, and earned all three certificates. The College Board recognized me with AP Scholar with Distinction. These things matter as signals. But the research and the fellowship felt like proof.</p>
+          <div class="pills"><span class="pill">3 Bloomberg Certifications</span><span class="pill gold-hi">AP Scholar with Distinction</span><span class="pill hi">National Recognition</span></div>
+        </div>
+      </div>
+    </div><!-- end acad-part 4 -->
+
   </div>
-</div>
 
 
-<!-- ── ENTREPRENEURSHIP (sec-a) ── -->
-<div class="sec-a" id="entrepreneurship">
+<!-- ── ENTREPRENEURSHIP (sec-b) ── -->
+<div class="sec-b" id="entrepreneurship">
   <div class="sec-inner">
     <p class="section-eyebrow reveal">Entrepreneurship</p>
     <h2 class="section-title reveal">Building &amp; Selling</h2>
-    <div class="cards-grid">
-
+    <div class="acad-part">
+      <div class="acad-side">
+        <div class="acad-num">05</div>
+        <div class="acad-narrative reveal">
+          <h3 class="acad-part-title">Building &amp; Selling</h3>
+          <p class="acad-text">I also run the merch operation for the Bronx Science fencing program. I design the products, find the vendors, manage the inventory, handle the sales, and the money goes back to the team. Before that I had a Depop store: sourcing clothes from overseas, writing listings, shipping orders, dealing with returns. Both taught me the same thing research and fencing did: when it's your money and your customer, there's no partial credit.</p>
+          <div class="pills"><span class="pill on">Active</span><span class="pill hi">Fundraising</span><span class="pill">E-commerce</span></div>
+        </div>
+      </div>
+    <div class="acad-cards-stack">
       <div class="exp-card reveal reveal-delay-1">
         <div class="card-head">
           <div class="card-head-top">
-            <div class="card-thumb"><img src="assets/Bronx-Science-Armada-Logo.jpg" alt="Bronx Science Fencing" /></div>
             <div class="card-head-title">
               <span class="card-badge on">Ongoing</span>
               <h3>Bronx Science Fencing Merch</h3>
@@ -932,7 +1231,6 @@ footer a:visited { color: rgba(255,255,255,0.75); }
       <div class="exp-card reveal reveal-delay-2">
         <div class="card-head">
           <div class="card-head-top">
-            <div class="card-thumb"><img src="assets/Depop-Logo.png" alt="Depop" /></div>
             <div class="card-head-title">
               <span class="card-badge dis">Discontinued</span>
               <h3>Online Reselling — Depop</h3>
@@ -957,22 +1255,22 @@ footer a:visited { color: rgba(255,255,255,0.75); }
         </div>
       </div>
 
-    </div>
+    </div><!-- end acad-cards-stack 5 -->
+    </div><!-- end acad-part 5 -->
   </div>
 </div>
 
 
-<!-- ── SERVICE (sec-b) ── -->
-<div class="sec-b" id="service">
+<!-- ── SERVICE (sec-a) ── -->
+<div class="sec-a" id="service">
   <div class="sec-inner">
     <p class="section-eyebrow reveal">Community</p>
     <h2 class="section-title reveal">Service &amp; Leadership</h2>
-    <div class="cards-grid">
-
+    <div class="acad-part">
+    <div class="acad-cards-stack">
       <div class="exp-card reveal reveal-delay-1">
         <div class="card-head">
           <div class="card-head-top">
-            <div class="card-thumb"><img src="assets/Golden-Eagle-Logo.jpeg" alt="Golden Eagle" /></div>
             <div class="card-head-title">
               <span class="card-badge on">Ongoing</span>
               <h3><a href="https://goldeneagleseniorcare.com/" target="_blank">Golden Eagle Senior Care</a></h3>
@@ -1000,7 +1298,6 @@ footer a:visited { color: rgba(255,255,255,0.75); }
       <div class="exp-card reveal reveal-delay-2">
         <div class="card-head">
           <div class="card-head-top">
-            <div class="card-thumb"><img src="assets/Bronx-Science-Girls-Fencing-Logo.jpg" alt="Girls Fencing" /></div>
             <div class="card-head-title">
               <span class="card-badge var">2025</span>
               <h3><a href="https://www.instagram.com/bxsci.fencing/" target="_blank">Girls Fencing Team Manager</a></h3>
@@ -1025,22 +1322,41 @@ footer a:visited { color: rgba(255,255,255,0.75); }
         </div>
       </div>
 
-    </div>
+    </div><!-- end acad-cards-stack 6 -->
+      <div class="acad-side">
+        <div class="acad-num">06</div>
+        <div class="acad-narrative reveal">
+          <h3 class="acad-part-title">Giving Back</h3>
+          <p class="acad-text">I volunteer regularly at Golden Eagle, a Mandarin-speaking Chinese senior care center in New York. It&rsquo;s one of the ways I stay connected to the community that raised me, and it&rsquo;s worth showing up for its own sake. I also spent a year managing the Bronx Science girls&rsquo; varsity fencing team: scheduling, equipment, logistics, keeping things moving so the coaches could coach.</p>
+          <div class="pills"><span class="pill hi">Community Service</span><span class="pill">Mandarin</span><span class="pill">Team Leadership</span></div>
+        </div>
+      </div>
+    </div><!-- end acad-part 6 -->
   </div>
 </div>
 
 
-<!-- ── FENCING (sec-a) ── -->
-<div class="sec-a" id="fencing">
+<!-- ── FENCING (sec-b) ── -->
+<div class="sec-b" id="fencing">
   <div class="sec-inner">
     <p class="section-eyebrow reveal">Athletics</p>
-    <h2 class="section-title reveal">Fencing</h2>
+    <h2 class="section-title reveal">Dual Fencer</h2>
 
+    <!-- ── PART 7: On the Strip ── -->
+    <div class="acad-part">
+      <div class="acad-side">
+        <div class="acad-num">07</div>
+        <div class="acad-narrative reveal">
+          <h3 class="acad-part-title">On the Strip</h3>
+          <p class="acad-text">I&rsquo;ve been fencing since before high school. At Bronx Science I made the varsity team freshman year and have competed in both épée and foil every season since. In 2025 I took a PSAL Foil Bronze Medal; my teammates voted me MVP that year. That summer I flew to France for two back-to-back elite camps: foil in Aix-en-Provence, épée in Aveyron, training under European champions. Fencing is where I go to compete without thinking about anything else.</p>
+          <div class="pills"><span class="pill gold-hi">🥉 PSAL Bronze</span><span class="pill hi">MVP 2024</span><span class="pill">France 2025</span></div>
+        </div>
+      </div>
+    <div class="acad-cards-stack">
     <!-- 01 Varsity -->
     <div class="exp-card reveal reveal-delay-1">
       <div class="card-head">
         <div class="card-head-top">
-          <div class="card-thumb"><img src="assets/Bronx-Science-Fencing-Logo.jpg" alt="Varsity Fencing" /></div>
           <div class="card-head-title">
             <span class="card-badge var">Varsity</span>
             <h3><a href="https://www.instagram.com/bxsci.fencing/" target="_blank">Bronx Science — Épée &amp; Foil</a></h3>
@@ -1067,11 +1383,54 @@ footer a:visited { color: rgba(255,255,255,0.75); }
       </div>
     </div>
 
-    <!-- 02 Épée -->
+    <!-- 04 France Camps -->
     <div class="exp-card reveal reveal-delay-2">
       <div class="card-head">
         <div class="card-head-top">
-          <div class="card-thumb"><img src="assets/Northshore-Fencers-Club-Logo.jpg" alt="North Shore FC" /></div>
+          <div class="card-head-title">
+            <span class="card-badge var">Summer 2025</span>
+            <h3>International Training — France</h3>
+          </div>
+          <div class="card-toggle">▾</div>
+        </div>
+        <div class="card-head-body">
+          <p class="card-intro">Back-to-back elite camps in France — Foil in Aix-en-Provence, Épée in Aveyron. Training under European champions.</p>
+          <div class="pills"><span class="pill hi">Aix-en-Provence</span><span class="pill hi">Aveyron</span><span class="pill">Aug 2025</span></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <img class="card-expand-photo" src="assets/Pau-Chou-Esteban-Fencing-Camp.jpg" alt="Fencing camp France" />
+          <h4>Foil — ASCC Foil Summer Camp</h4>
+          <p><a href="https://escrime-paysdaix.fr/epaaix/events/international-fencing-camp-summer-2025/" target="_blank" style="color:var(--accent)">Aix-en-Provence, France · Aug 2–8, 2025</a></p>
+          <ul>
+            <li>Trained under former national team athletes and European champions</li>
+            <li>Practiced with top young fencers from France and worldwide</li>
+            <li>Focused on foil technique, footwork, strategy, and psychomotor skill development</li>
+            <li>Participated in strength and conditioning sessions</li>
+          </ul>
+          <h4>Épée — Naucelle Épée Summer Camp</h4>
+          <p><a href="https://www.stage-escrime-defiplus.com/stage-aout/" target="_blank" style="color:var(--accent)">Aveyron, France · Aug 16–22, 2025</a></p>
+          <ul>
+            <li>Trained under expert coaches with individualized and group sessions</li>
+            <li>Focused on épée technique, themed bouts, and fundamental drills</li>
+            <li>Multi-sport challenges, triathlon, and team-based activities</li>
+            <li>Received personalized training plans for the upcoming fencing season</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    </div><!-- end acad-cards-stack 7 -->
+    </div><!-- end acad-part 7 -->
+
+    <!-- ── PART 8: Competing Nationally ── -->
+    <div class="acad-part">
+    <div class="acad-cards-stack">
+    <!-- 02 Épée -->
+    <div class="exp-card reveal reveal-delay-1">
+      <div class="card-head">
+        <div class="card-head-top">
           <div class="card-head-title">
             <span class="card-badge">Épée · B25</span>
             <h3><a href="https://northshorefc.com/" target="_blank">North Shore Fencers Club</a></h3>
@@ -1117,10 +1476,9 @@ footer a:visited { color: rgba(255,255,255,0.75); }
     </div>
 
     <!-- 03 Foil -->
-    <div class="exp-card reveal reveal-delay-3">
+    <div class="exp-card reveal reveal-delay-2">
       <div class="card-head">
         <div class="card-head-top">
-          <div class="card-thumb"><img src="assets/East-Coast-Fencing-Club-Logo.jpeg" alt="East Coast FC" /></div>
           <div class="card-head-title">
             <span class="card-badge">Foil · C26</span>
             <h3><a href="https://www.eastcoastfencingclub.com" target="_blank">East Coast Fencing Club</a></h3>
@@ -1163,44 +1521,16 @@ footer a:visited { color: rgba(255,255,255,0.75); }
       </div>
     </div>
 
-    <!-- 04 France Camps -->
-    <div class="exp-card reveal reveal-delay-4">
-      <div class="card-head">
-        <div class="card-head-top">
-          <div class="card-thumb"><img src="assets/France-Fencing-Camps.jpg" alt="France Camps" /></div>
-          <div class="card-head-title">
-            <span class="card-badge var">Summer 2025</span>
-            <h3>International Training — France</h3>
-          </div>
-          <div class="card-toggle">▾</div>
-        </div>
-        <div class="card-head-body">
-          <p class="card-intro">Back-to-back elite camps in France — Foil in Aix-en-Provence, Épée in Aveyron. Training under European champions.</p>
-          <div class="pills"><span class="pill hi">Aix-en-Provence</span><span class="pill hi">Aveyron</span><span class="pill">Aug 2025</span></div>
+    </div><!-- end acad-cards-stack 8 -->
+      <div class="acad-side">
+        <div class="acad-num">08</div>
+        <div class="acad-narrative reveal">
+          <h3 class="acad-part-title">Competing Nationally</h3>
+          <p class="acad-text">At the club level I train and compete nationally. In épée I&rsquo;m B25 rated, qualified for the 2026 Junior Olympics and Summer Nationals. In foil I&rsquo;m C26, qualified for Junior Olympics and Summer Nationals in both 2025 and 2026. Across both weapons: 18 tournament medals. The sport has given me a tolerance for losing, a habit of breaking things down, and a reason to keep showing up.</p>
+          <div class="pills"><span class="pill gold-hi">B25 Épée</span><span class="pill gold-hi">C26 Foil</span><span class="pill hi">Junior Olympics ×2</span><span class="pill">18 Medals</span></div>
         </div>
       </div>
-      <div class="card-body">
-        <div class="card-body-inner">
-          <img class="card-expand-photo" src="assets/Pau-Chou-Esteban-Fencing-Camp.jpg" alt="Fencing camp France" />
-          <h4>Foil — ASCC Foil Summer Camp</h4>
-          <p><a href="https://escrime-paysdaix.fr/epaaix/events/international-fencing-camp-summer-2025/" target="_blank" style="color:var(--accent)">Aix-en-Provence, France · Aug 2–8, 2025</a></p>
-          <ul>
-            <li>Trained under former national team athletes and European champions</li>
-            <li>Practiced with top young fencers from France and worldwide</li>
-            <li>Focused on foil technique, footwork, strategy, and psychomotor skill development</li>
-            <li>Participated in strength and conditioning sessions</li>
-          </ul>
-          <h4>Épée — Naucelle Épée Summer Camp</h4>
-          <p><a href="https://www.stage-escrime-defiplus.com/stage-aout/" target="_blank" style="color:var(--accent)">Aveyron, France · Aug 16–22, 2025</a></p>
-          <ul>
-            <li>Trained under expert coaches with individualized and group sessions</li>
-            <li>Focused on épée technique, themed bouts, and fundamental drills</li>
-            <li>Multi-sport challenges, triathlon, and team-based activities</li>
-            <li>Received personalized training plans for the upcoming fencing season</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    </div><!-- end acad-part 8 -->
 
 
     <!-- Medal tally -->
@@ -1234,6 +1564,8 @@ footer a:visited { color: rgba(255,255,255,0.75); }
     <a class="footer-ext-link" href="https://fencingtracker.com/p/100507831/Pau-Chou-Esteban" target="_blank">Fencing Tracker</a>
     &nbsp;·&nbsp;
     <a class="footer-ext-link" href="https://www.instagram.com/bxsci.fencing/" target="_blank">Instagram</a>
+    &nbsp;&middot;&nbsp;
+    <a class="footer-ext-link" href="https://www.linkedin.com/in/pau-chou-esteban/" target="_blank">LinkedIn</a>
   </p>
   <p style="margin-top: 10px; font-size: 13px;">
     Site designed by Sangho Kim &nbsp;·&nbsp; Crafted with <a href="https://claude.ai" target="_blank" style="color:rgba(255,255,255,0.75);">Claude</a> by Anthropic
